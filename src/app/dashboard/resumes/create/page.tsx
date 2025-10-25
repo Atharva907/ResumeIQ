@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { ArrowLeft, Eye, Save, FileText, Download } from "lucide-react";
 import Link from "next/link";
