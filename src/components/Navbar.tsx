@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-yellow-400 to-yellow-600 text-primary-foreground shadow-sm">
               <span className="text-sm font-bold">RI</span>
             </div>
             <span className="hidden font-bold sm:inline-block">ResumeIQ</span>

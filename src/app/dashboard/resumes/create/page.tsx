@@ -228,30 +228,36 @@ export default function CreateResumePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-background via-yellow-50/20 to-background relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-yellow-200/10 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-yellow-300/10 blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/dashboard">
-              <Button variant="ghost" size="icon">
-                <ArrowLeft className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="rounded-full border border-yellow-200/50 hover:bg-yellow-50/50 transition-all duration-300 hover:scale-105">
+                <ArrowLeft className="h-4 w-4 text-yellow-600" />
               </Button>
             </Link>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight">Create Resume</h1>
+              <h1 className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground via-yellow-600 to-foreground">Create Resume</h1>
               <p className="text-muted-foreground">Build your professional resume with AI assistance</p>
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={handleDownloadPDF}>
+            <Button variant="outline" className="border-yellow-400 text-yellow-600 hover:bg-yellow-50" onClick={handleDownloadPDF}>
               <FileText className="mr-2 h-4 w-4" />
               PDF
             </Button>
-            <Button variant="outline" onClick={handleDownloadDOCX}>
+            <Button variant="outline" className="border-yellow-400 text-yellow-600 hover:bg-yellow-50" onClick={handleDownloadDOCX}>
               <Download className="mr-2 h-4 w-4" />
               DOCX
             </Button>
-            <Button onClick={() => handleSave(resumeData)}>
+            <Button className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white" onClick={() => handleSave(resumeData)}>
               <Save className="mr-2 h-4 w-4" />
               Save
             </Button>
@@ -259,9 +265,13 @@ export default function CreateResumePage() {
         </div>
 
         <div className="mb-6">
-          <Card>
+          <Card className="overflow-hidden border border-yellow-200/30 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div className="h-1 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
             <CardHeader>
-              <CardTitle>Resume Details</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+                Resume Details
+              </CardTitle>
               <CardDescription>Provide a title for your resume</CardDescription>
             </CardHeader>
             <CardContent>
@@ -281,7 +291,7 @@ export default function CreateResumePage() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="h-[calc(100vh-280px)]">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full border border-yellow-200/30 bg-gradient-to-r from-yellow-50/50 to-yellow-100/30 shadow-sm grid-cols-2">
             <TabsTrigger value="edit">Edit</TabsTrigger>
             <TabsTrigger value="preview">Preview</TabsTrigger>
           </TabsList>
@@ -296,10 +306,12 @@ export default function CreateResumePage() {
             />
           </TabsContent>
           <TabsContent value="preview" className="h-[calc(100%-40px)] overflow-auto">
-            <Card className="h-full">
+            <Card className="h-full overflow-hidden border border-yellow-200/30 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="h-1 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
               <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Eye className="mr-2 h-5 w-5" />
+                <CardTitle className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+                  <Eye className="mr-2 h-5 w-5 text-yellow-600" />
                   Resume Preview
                 </CardTitle>
               </CardHeader>
