@@ -24,24 +24,101 @@ interface CodeEditorProps {
   initialContent?: string;
   onSave?: (content: string) => void;
   onPreview?: (content: string) => void;
+  onTemplateChange,
+  onDownloadPDF,
+  onDownloadDOCX?: (template: string) => void;
+  onDownloadPDF?: () => void;
+  onDownloadDOCX?: () => void;
 }
 
+const defaultResumeData = {
+  name: "John Doe",
+  title: "Software Engineer",
+  contact: {
+    email: "john.doe@example.com",
+    phone: "(123) 456-7890",
+    location: "San Francisco, CA",
+    linkedin: "linkedin.com/in/johndoe",
+    github: "github.com/johndoe"
+  },
+  summary: "Experienced software engineer with 5+ years of expertise in full-stack development, specializing in React, Node.js, and cloud technologies. Proven track record of delivering high-quality solutions and leading cross-functional teams.",
+  experience: [
+    {
+      role: "Senior Software Engineer",
+      company: "Tech Solutions Inc.",
+      duration: "2020-Present",
+      description: "Led development of microservices architecture, improving system scalability by 40%",
+      highlights: [
+        "Implemented CI/CD pipelines, reducing deployment time by 60%",
+        "Mentored junior developers and conducted code reviews",
+        "Collaborated with product team to define technical requirements"
+      ]
+    },
+    {
+      role: "Software Engineer",
+      company: "Digital Innovations LLC",
+      duration: "2018-2020",
+      description: "Developed and maintained web applications using React and Node.js",
+      highlights: [
+        "Optimized database queries, improving application performance by 30%",
+        "Participated in agile development processes and daily stand-ups"
+      ]
+    }
+  ],
+  education: [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      institution: "University of Technology",
+      duration: "2014-2018",
+      details: "GPA: 3.8/4.0, Dean's List: 6 semesters"
+    }
+  ],
+  skills: [
+    "JavaScript", "TypeScript", "Python", "Java",
+    "React", "Vue.js", "HTML5", "CSS3", "SASS",
+    "Node.js", "Express", "Django", "Spring Boot",
+    "MongoDB", "PostgreSQL", "MySQL", "Redis",
+    "AWS", "Azure", "Google Cloud", "Docker", "Kubernetes",
+    "Git", "Jira", "Jenkins", "Webpack", "Babel"
+  ],
+  projects: [
+    {
+      name: "Task Management App",
+      duration: "2022",
+      description: "Developed a full-stack task management application with React and Node.js",
+      technologies: ["React", "Node.js", "MongoDB", "AWS"]
+    }
+  ]
+};
+
 const templates = [
-  { id: "classic", name: "Classic" },
-  { id: "modern", name: "Modern" },
-  { id: "creative", name: "Creative" },
+  { id: "ClassicTemplate", name: "Classic Clean" },
+  { id: "ModernBlueTemplate", name: "Modern Blue" },
+  { id: "ElegantSerifTemplate", name: "Elegant Serif" },
+  { id: "TechMinimalTemplate", name: "Tech Minimal" },
+  { id: "CreativeSplitTemplate", name: "Creative Split" },
+  { id: "CompactProfessionalTemplate", name: "Compact Professional" },
+  { id: "GradientFlowTemplate", name: "Gradient Flow" },
+  { id: "BoldTitleTemplate", name: "Bold Title" },
+  { id: "CorporateStandardTemplate", name: "Corporate Standard" },
+  { id: "VisualImpactTemplate", name: "Visual Impact" },
+  { id: "ModernElegantTemplate", name: "Modern Elegant" },
+  { id: "CreativePortfolioTemplate", name: "Creative Portfolio" },
 ];
 
-const aiSuggestions = [
-  "Add a professional summary at the top",
-  "Include specific metrics for your achievements",
-  "Use action verbs to start bullet points",
-  "Highlight relevant skills for the job",
-];
 
-export default function CodeEditor({ initialContent = "", onSave, onPreview }: CodeEditorProps) {
+
+export default function CodeEditor({ 
+  initialContent = JSON.stringify(defaultResumeData, null, 2), 
+  onSave, 
+  onPreview,
+  onTemplateChange,
+  onDownloadPDF,
+  onDownloadDOCX 
+}: CodeEditorProps) {
   const [content, setContent] = useState(initialContent);
-  const [selectedTemplate, setSelectedTemplate] = useState("classic");
+  const [selectedTemplate, setSelectedTemplate] = useState("ClassicTemplate");
+  const [isImproving, setIsImproving] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const editorRef = useRef(null);
 
@@ -62,18 +139,58 @@ export default function CodeEditor({ initialContent = "", onSave, onPreview }: C
   };
 
   const handleDownloadPDF = () => {
-    // PDF download functionality will be implemented later
-    console.log("Downloading PDF...");
+    if (onDownloadPDF) {
+      onDownloadPDF();
+    }
   };
 
   const handleDownloadDOCX = () => {
-    // DOCX download functionality will be implemented later
-    console.log("Downloading DOCX...");
+    if (onDownloadDOCX) {
+      onDownloadDOCX();
+    }
   };
 
-  const handleApplySuggestion = (suggestion: string) => {
-    // AI suggestion application will be implemented later
-    console.log("Applying suggestion:", suggestion);
+  const handleApplySuggestion = async () => {
+    setIsImproving(true);
+    try {
+      const response = await fetch('/api/improveResume', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ resumeData: content }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.improved) {
+        // If the response is a JSON string, parse it
+        let improvedContent;
+        try {
+          improvedContent = typeof data.improved === 'string' 
+            ? data.improved 
+            : JSON.stringify(data.improved, null, 2);
+        } catch (e) {
+          improvedContent = data.improved;
+        }
+
+        setContent(improvedContent);
+        if (onSave) onSave(improvedContent);
+      } else {
+        console.error('Failed to improve resume:', data.error);
+      }
+    } catch (error) {
+      console.error('Error improving resume:', error);
+    } finally {
+      setIsImproving(false);
+    }
+  };
+
+  const handleTemplateChange = (templateId: string) => {
+    setSelectedTemplate(templateId);
+    if (onTemplateChange) {
+      onTemplateChange(templateId);
+    }
   };
 
   const insertText = (text: string) => {
@@ -102,8 +219,8 @@ export default function CodeEditor({ initialContent = "", onSave, onPreview }: C
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b p-2">
         <div className="flex items-center gap-2">
-          <Select value={selectedTemplate} onValueChange={setSelectedTemplate}>
-            <SelectTrigger className="w-[140px]">
+          <Select value={selectedTemplate} onValueChange={handleTemplateChange}>
+            <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select template" />
             </SelectTrigger>
             <SelectContent>
@@ -154,8 +271,8 @@ export default function CodeEditor({ initialContent = "", onSave, onPreview }: C
         </div>
 
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" onClick={() => setShowSuggestions(!showSuggestions)}>
-            <Sparkles className="h-4 w-4" />
+          <Button variant="ghost" size="icon" onClick={handleApplySuggestion} disabled={isImproving}>
+            {isImproving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
           </Button>
           <Button variant="ghost" size="icon" onClick={handlePreview}>
             <Eye className="h-4 w-4" />
@@ -181,7 +298,7 @@ export default function CodeEditor({ initialContent = "", onSave, onPreview }: C
         <div className="flex-1">
           <Editor
             height="100%"
-            defaultLanguage="markdown"
+            defaultLanguage="json"
             value={content}
             onChange={(value) => setContent(value || "")}
             onMount={handleEditorDidMount}
@@ -191,31 +308,13 @@ export default function CodeEditor({ initialContent = "", onSave, onPreview }: C
               lineNumbers: "on",
               scrollBeyondLastLine: false,
               automaticLayout: true,
+              folding: true,
+              fontSize: 14,
             }}
           />
         </div>
 
-        {/* AI Suggestions Panel */}
-        {showSuggestions && (
-          <div className="w-80 border-l p-4 overflow-y-auto">
-            <h3 className="mb-4 font-semibold">AI Suggestions</h3>
-            <div className="space-y-3">
-              {aiSuggestions.map((suggestion, index) => (
-                <div key={index} className="rounded-md border p-3">
-                  <p className="text-sm">{suggestion}</p>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="mt-2 h-8 px-2 text-xs"
-                    onClick={() => handleApplySuggestion(suggestion)}
-                  >
-                    Apply
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
       </div>
     </div>
   );

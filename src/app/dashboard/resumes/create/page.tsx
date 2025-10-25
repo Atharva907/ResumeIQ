@@ -1,89 +1,230 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { ArrowLeft, Eye, Save, FileText, Download } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import CodeEditor from "@/components/CodeEditor";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const defaultResumeContent = `# John Doe
-Software Engineer
-
-## Contact
-- Email: john.doe@example.com
-- Phone: (123) 456-7890
-- LinkedIn: linkedin.com/in/johndoe
-- GitHub: github.com/johndoe
-
-## Summary
-Experienced software engineer with 5+ years of expertise in full-stack development, specializing in React, Node.js, and cloud technologies. Proven track record of delivering high-quality solutions and leading cross-functional teams.
-
-## Experience
-**Senior Software Engineer** | Tech Solutions Inc. | 2020-Present
-- Led development of microservices architecture, improving system scalability by 40%
-- Implemented CI/CD pipelines, reducing deployment time by 60%
-- Mentored junior developers and conducted code reviews
-- Collaborated with product team to define technical requirements
-
-**Software Engineer** | Digital Innovations LLC | 2018-2020
-- Developed and maintained web applications using React and Node.js
-- Optimized database queries, improving application performance by 30%
-- Participated in agile development processes and daily stand-ups
-
-## Education
-**Bachelor of Science in Computer Science** | University of Technology | 2014-2018
-- GPA: 3.8/4.0
-- Dean's List: 6 semesters
-- Senior Project: E-commerce Platform with React and Node.js
-
-## Skills
-- **Programming Languages**: JavaScript, TypeScript, Python, Java
-- **Frontend**: React, Vue.js, HTML5, CSS3, SASS
-- **Backend**: Node.js, Express, Django, Spring Boot
-- **Databases**: MongoDB, PostgreSQL, MySQL, Redis
-- **Cloud**: AWS, Azure, Google Cloud, Docker, Kubernetes
-- **Tools**: Git, Jira, Jenkins, Webpack, Babel
-
-## Projects
-**Task Management App** | Personal Project | 2022
-- Developed a full-stack task management application with React and Node.js
-- Implemented user authentication, real-time updates, and drag-and-drop functionality
-- Deployed on AWS with CI/CD pipeline
-
-**E-commerce Platform** | University Project | 2018
-- Built a responsive e-commerce website with product catalog and payment integration
-- Implemented shopping cart, order management, and admin dashboard
-`;
+const defaultResumeData = {
+  name: "John Doe",
+  title: "Software Engineer",
+  contact: {
+    email: "john.doe@example.com",
+    phone: "(123) 456-7890",
+    location: "San Francisco, CA",
+    linkedin: "linkedin.com/in/johndoe",
+    github: "github.com/johndoe"
+  },
+  summary: "Experienced software engineer with 5+ years of expertise in full-stack development, specializing in React, Node.js, and cloud technologies. Proven track record of delivering high-quality solutions and leading cross-functional teams.",
+  experience: [
+    {
+      role: "Senior Software Engineer",
+      company: "Tech Solutions Inc.",
+      duration: "2020-Present",
+      description: "Led development of microservices architecture, improving system scalability by 40%",
+      highlights: [
+        "Implemented CI/CD pipelines, reducing deployment time by 60%",
+        "Mentored junior developers and conducted code reviews",
+        "Collaborated with product team to define technical requirements"
+      ]
+    },
+    {
+      role: "Software Engineer",
+      company: "Digital Innovations LLC",
+      duration: "2018-2020",
+      description: "Developed and maintained web applications using React and Node.js",
+      highlights: [
+        "Optimized database queries, improving application performance by 30%",
+        "Participated in agile development processes and daily stand-ups"
+      ]
+    }
+  ],
+  education: [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      institution: "University of Technology",
+      duration: "2014-2018",
+      details: "GPA: 3.8/4.0, Dean's List: 6 semesters"
+    }
+  ],
+  skills: [
+    "JavaScript", "TypeScript", "Python", "Java",
+    "React", "Vue.js", "HTML5", "CSS3", "SASS",
+    "Node.js", "Express", "Django", "Spring Boot",
+    "MongoDB", "PostgreSQL", "MySQL", "Redis",
+    "AWS", "Azure", "Google Cloud", "Docker", "Kubernetes",
+    "Git", "Jira", "Jenkins", "Webpack", "Babel"
+  ],
+  projects: [
+    {
+      name: "Task Management App",
+      duration: "2022",
+      description: "Developed a full-stack task management application with React and Node.js",
+      technologies: ["React", "Node.js", "MongoDB", "AWS"]
+    }
+  ]
+};
 
 export default function CreateResumePage() {
   const [resumeTitle, setResumeTitle] = useState("Untitled Resume");
-  const [resumeContent, setResumeContent] = useState(defaultResumeContent);
-  const [previewContent, setPreviewContent] = useState(defaultResumeContent);
+  const [resumeData, setResumeData] = useState(JSON.stringify(defaultResumeData, null, 2));
+  const [selectedTemplate, setSelectedTemplate] = useState("ClassicTemplate");
+  const [TemplateComponent, setTemplateComponent] = useState<any>(null);
   const [activeTab, setActiveTab] = useState("edit");
 
-  const handleSave = (content: string) => {
-    // Save functionality will be implemented later
-    console.log("Saving resume:", { title: resumeTitle, content });
+  // Load the template component dynamically
+  useEffect(() => {
+    const loadTemplate = async () => {
+      try {
+        const template = await dynamic(
+          () => import(`@/components/resume-templates/${selectedTemplate}`),
+          { ssr: false }
+        );
+        setTemplateComponent(() => template);
+      } catch (error) {
+        console.error("Error loading template:", error);
+      }
+    };
+
+    loadTemplate();
+  }, [selectedTemplate]);
+
+  const handleSave = async (content: string) => {
+    try {
+      // Save to the database via API
+      const response = await fetch('/api/resumes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: resumeTitle,
+          content: content,
+          template: selectedTemplate,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Show success message
+        alert('Resume saved successfully!');
+      } else {
+        // Show error message
+        alert(data.message || 'Error saving resume');
+      }
+    } catch (error) {
+      console.error("Error saving resume:", error);
+      alert('Error saving resume. Please try again.');
+    }
   };
 
-  const handlePreview = (content: string) => {
-    setPreviewContent(content);
+  const handlePreview = () => {
+    // Switch to preview tab
     setActiveTab("preview");
+    // Scroll to top to see the preview
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleDownloadPDF = () => {
-    // PDF download functionality will be implemented later
-    console.log("Downloading PDF...");
+  const handleTemplateChange = (templateId: string) => {
+    setSelectedTemplate(templateId);
   };
 
-  const handleDownloadDOCX = () => {
-    // DOCX download functionality will be implemented later
-    console.log("Downloading DOCX...");
+  const handleDownloadPDF = async () => {
+    try {
+      // Switch to preview tab first
+      setActiveTab("preview");
+      
+      // Wait a bit for the preview to render
+      setTimeout(async () => {
+        const element = document.querySelector(".bg-white.shadow-lg");
+        if (!element) {
+          console.error("Resume preview element not found");
+          return;
+        }
+        
+        // Get the HTML content
+        const htmlContent = element.innerHTML;
+        
+        // Call the API to generate PDF
+        const response = await fetch('/api/generate-pdf', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            htmlContent,
+            filename: `${resumeTitle}.pdf`
+          }),
+        });
+        
+        if (response.ok) {
+          // Create a blob from the PDF data
+          const blob = await response.blob();
+          
+          // Create a link element to download the PDF
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.style.display = 'none';
+          a.href = url;
+          a.download = `${resumeTitle}.pdf`;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        } else {
+          const data = await response.json();
+          alert(data.message || 'Error generating PDF');
+        }
+      }, 500);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      alert('Error generating PDF. Please try again.');
+    }
+  };
+
+  const handleDownloadDOCX = async () => {
+    try {
+      // Call the API to generate DOCX
+      const response = await fetch('/api/generate-docx', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          resumeData: resumeData,
+          filename: `${resumeTitle}.docx`
+        }),
+      });
+      
+      if (response.ok) {
+        // Create a blob from the DOCX data
+        const blob = await response.blob();
+        
+        // Create a link element to download the DOCX
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `${resumeTitle}.docx`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } else {
+        const data = await response.json();
+        alert(data.message || 'Error generating DOCX');
+      }
+    } catch (error) {
+      console.error("Error generating DOCX:", error);
+      alert('Error generating DOCX. Please try again.');
+    }
   };
 
   return (
@@ -110,7 +251,7 @@ export default function CreateResumePage() {
               <Download className="mr-2 h-4 w-4" />
               DOCX
             </Button>
-            <Button onClick={() => handleSave(resumeContent)}>
+            <Button onClick={() => handleSave(resumeData)}>
               <Save className="mr-2 h-4 w-4" />
               Save
             </Button>
@@ -146,9 +287,12 @@ export default function CreateResumePage() {
           </TabsList>
           <TabsContent value="edit" className="h-[calc(100%-40px)]">
             <CodeEditor
-              initialContent={resumeContent}
+              initialContent={resumeData}
               onSave={handleSave}
               onPreview={handlePreview}
+              onTemplateChange={handleTemplateChange}
+              onDownloadPDF={handleDownloadPDF}
+              onDownloadDOCX={handleDownloadDOCX}
             />
           </TabsContent>
           <TabsContent value="preview" className="h-[calc(100%-40px)] overflow-auto">
@@ -159,10 +303,12 @@ export default function CreateResumePage() {
                   Resume Preview
                 </CardTitle>
               </CardHeader>
-              <CardContent className="h-[calc(100%-80px)] overflow-auto">
-                <div className="prose max-w-none">
-                  <div className="whitespace-pre-wrap">{previewContent}</div>
-                </div>
+              <CardContent className="h-[calc(100%-80px)] overflow-auto bg-gray-50">
+                {TemplateComponent && (
+                  <div className="w-full max-w-4xl mx-auto bg-white shadow-lg">
+                    <TemplateComponent data={JSON.parse(resumeData)} />
+                  </div>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
