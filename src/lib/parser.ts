@@ -53,8 +53,7 @@ export async function generatePDF(resumeText: string): Promise<Buffer> {
 export async function generateDOCX(resumeText: string): Promise<Buffer> {
   try {
     // Split text by lines to create paragraphs
-    const lines = resumeText.split('
-').filter(line => line.trim());
+    const lines = resumeText.split("\n").filter(line => line.trim());
 
     // Create document with paragraphs
     const doc = new Document({
