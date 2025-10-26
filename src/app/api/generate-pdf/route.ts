@@ -5,7 +5,6 @@ export async function POST(request: NextRequest) {
   try {
     const { htmlContent, filename } = await request.json();
 
-    // Launch a headless browser
     const browser = await puppeteer.launch({
       headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -13,10 +12,17 @@ export async function POST(request: NextRequest) {
 
     const page = await browser.newPage();
 
-    // Set the content to our HTML
+    // ✅ Set full HTML content with styles
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
 
-    // Generate the PDF
+    // ✅ Optional: set a fixed viewport for consistent layout
+    await page.setViewport({ width: 1200, height: 1600 });
+
+    // ✅ Ensure white background for better results
+    await page.evaluate(() => {
+      document.body.style.background = 'white';
+    });
+
     const pdfBuffer = await page.pdf({
       format: 'A4',
       printBackground: true,
@@ -30,12 +36,11 @@ export async function POST(request: NextRequest) {
 
     await browser.close();
 
-    // Return the PDF as a response
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(new Uint8Array(pdfBuffer), {
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename="${filename}"`
-      }
+        'Content-Disposition': `attachment; filename="${filename}"`,
+      },
     });
   } catch (error) {
     console.error('Error generating PDF:', error);
