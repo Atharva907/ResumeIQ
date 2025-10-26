@@ -146,7 +146,7 @@ export default function CodeEditor({
   const [selectedTemplate, setSelectedTemplate] = useState("ClassicTemplate");
   const [isImproving, setIsImproving] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const editorRef = useRef(null);
+  const editorRef = useRef<any>(null);
 
   const handleEditorDidMount = (editor: any) => {
     editorRef.current = editor;
@@ -243,7 +243,7 @@ export default function CodeEditor({
 
   const insertText = (text: string) => {
     if (editorRef.current) {
-      const editor = editorRef.current;
+      const editor = editorRef.current as any;
       const selection = editor.getSelection();
       const model = editor.getModel();
 
