@@ -19,6 +19,7 @@ import {
   ListOrdered,
   Quote
 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface CodeEditorProps {
   value?: string;
