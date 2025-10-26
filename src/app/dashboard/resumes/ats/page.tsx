@@ -1,5 +1,4 @@
-"use client";
-import { useState } from "react";
+"use client"; import { useState } from "react";
 import { ArrowLeft, CheckCircle, AlertCircle, FileText, Loader2, Search, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
