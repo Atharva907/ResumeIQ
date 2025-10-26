@@ -198,7 +198,7 @@ export default function TemplatesPage() {
                 <CardContent className="p-4 flex flex-col gap-3">
                   <div className="relative h-48 overflow-hidden rounded-md border border-gray-200 bg-white shadow-sm">
                     <div className="absolute inset-0 scale-[0.4] origin-top-left w-[250%] h-[250%] overflow-auto">
-                      {previewData && <TemplatePreview data={previewData} />}
+                      {previewData && <TemplatePreview {...previewData} />}
                     </div>
                   </div>
                   <div className="flex items-center justify-between w-full">
@@ -237,7 +237,7 @@ export default function TemplatesPage() {
                   <div className="transform scale-90 origin-top w-full max-w-4xl bg-white shadow-lg rounded-md p-2">
                     {modalComponent && modalData && (() => {
                       const ModalComponent = modalComponent;
-                      return <ModalComponent data={modalData} />;
+                      return <ModalComponent {...modalData} />;
                     })()}
                   </div>
                 )}
