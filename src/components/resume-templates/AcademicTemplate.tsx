@@ -1,4 +1,4 @@
-export default function AcademicTemplate({ data }) {
+export default function AcademicTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-white text-gray-800" id="resume-preview">
       {/* Academic Header */}
