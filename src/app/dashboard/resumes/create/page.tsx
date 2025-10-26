@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import dynamic from "next/dynamic";
 import { ArrowLeft, Eye, Save, FileText, Download, Loader2 } from "lucide-react";
 import Link from "next/link";
