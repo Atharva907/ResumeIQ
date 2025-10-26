@@ -25,9 +25,7 @@ interface CodeEditorProps {
   onChange?: (content: string) => void;
   onSave?: (content: string) => void;
   onPreview?: (content: string) => void;
-  onTemplateChange,
-  onDownloadPDF,
-  onDownloadDOCX?: (template: string) => void;
+  onTemplateChange?: (template: string) => void;
   onDownloadPDF?: () => void;
   onDownloadDOCX?: () => void;
 }
