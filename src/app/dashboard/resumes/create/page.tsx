@@ -205,7 +205,7 @@ const getTemplateData = (templateId: string) => {
   };
 };
 
-export default function CreateResumePage() {
+function CreateResumePageContent() {
   const searchParams = useSearchParams();
   const templateFromUrl = searchParams.get("template") || "ClassicTemplate";
   
@@ -511,5 +511,13 @@ export default function CreateResumePage() {
         </Tabs>
       </div>
     </div>
+  );
+}
+
+export default function CreateResumePage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center h-screen"><Loader2 className="h-8 w-8 animate-spin" /></div>}>
+      <CreateResumePageContent />
+    </Suspense>
   );
 }
