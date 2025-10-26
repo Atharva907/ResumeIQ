@@ -49,8 +49,8 @@ export default function DashboardPage() {
             <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
             <p className="text-muted-foreground">Manage your resumes and track your job applications</p>
           </div>
-          <Link href="/dashboard/resumes/create">
-            <Button className="mt-4 md:mt-0">
+          <Link href="/dashboard/resumes/templates">
+            <Button className="mt-4 md:mt-0 bg-yellow-500 hover:bg-yellow-600 text-white">
               <Plus className="mr-2 h-4 w-4" />
               Create New Resume
             </Button>

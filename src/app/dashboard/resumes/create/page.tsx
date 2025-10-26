@@ -358,6 +358,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { ArrowLeft, Eye, Save, FileText, Download, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -451,11 +452,14 @@ const defaultResumeData = {
 };
 
 export default function CreateResumePage() {
+  const searchParams = useSearchParams();
+  const templateFromUrl = searchParams.get("template") || "ClassicTemplate";
+  
   const [resumeTitle, setResumeTitle] = useState("Untitled Resume");
   const [resumeData, setResumeData] = useState(
     JSON.stringify(defaultResumeData, null, 2)
   );
-  const [selectedTemplate, setSelectedTemplate] = useState("ClassicTemplate");
+  const [selectedTemplate, setSelectedTemplate] = useState(templateFromUrl);
   const [TemplateComponent, setTemplateComponent] = useState<any>(null);
   const [activeTab, setActiveTab] = useState("edit");
   const [isSaving, setIsSaving] = useState(false);
