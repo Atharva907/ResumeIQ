@@ -52,8 +52,7 @@ export interface ATSScoreResult {
 }
 
 // Extract keywords from text with importance scoring
-function extractKeywords(text: string): { keywords: string[], importance: Map<string, number> } {
-  // Common technical skills that are often important in tech resumes
+function extractKeywords(text: string): { keywords: string[]; importance: Map<string, number> } {
   const commonSkills = [
     'React', 'JavaScript', 'TypeScript', 'Node.js', 'Python', 'Java', 'C++',
     'HTML', 'CSS', 'SQL', 'MongoDB', 'PostgreSQL', 'AWS', 'Azure',
@@ -76,8 +75,8 @@ function extractKeywords(text: string): { keywords: string[], importance: Map<st
     const count = words.filter(word => word.includes(skillLower)).length;
     if (count > 0) {
       keywordCount[skill] = count;
-      // Higher importance for more specific or technical skills
-      importance.set(skill, 
+      importance.set(
+        skill,
         skill.includes('API') || skill.includes('CI/CD') || skill.includes('Microservices') ? 3 :
         skill.includes('React') || skill.includes('Node.js') || skill.includes('TypeScript') ? 2.5 :
         skill.includes('JavaScript') || skill.includes('Python') || skill.includes('Java') ? 2 :
@@ -87,12 +86,12 @@ function extractKeywords(text: string): { keywords: string[], importance: Map<st
     }
   });
 
-  // Also extract capitalized words that might be proper nouns or technologies
-  const capitalizedWords = text.match(/[A-Z][a-z]+/g) || [];
+  // Extract capitalized words (proper nouns or technologies)
+  const capitalizedWords = text.match(/\b[A-Z][a-z]+\b/g) || [];
   capitalizedWords.forEach(word => {
     if (!keywordCount[word] && word.length > 3) {
       keywordCount[word] = 1;
-      importance.set(word, 1); // Default importance for unknown capitalized words
+      importance.set(word, 1);
     }
   });
 
@@ -102,7 +101,7 @@ function extractKeywords(text: string): { keywords: string[], importance: Map<st
   };
 }
 
-// Calculate keyword match score between resume and job description
+// Calculate keyword match score
 export function calculateKeywordMatch(resumeText: string, jobDescriptionText: string): KeywordMatchResult {
   const resumeKeywords = extractKeywords(resumeText);
   const jobKeywords = extractKeywords(jobDescriptionText);
@@ -110,10 +109,10 @@ export function calculateKeywordMatch(resumeText: string, jobDescriptionText: st
   const matched: KeywordMatch[] = [];
   const missing: MissingKeyword[] = [];
 
-  // Find matched keywords
+  // Matched keywords
   resumeKeywords.keywords.forEach(keyword => {
     if (jobKeywords.keywords.includes(keyword.toLowerCase())) {
-      const relevance = 
+      const relevance =
         (jobKeywords.importance.get(keyword) || 0) >= 3 ? 'high' :
         (jobKeywords.importance.get(keyword) || 0) >= 2 ? 'medium' : 'low';
 
@@ -125,24 +124,19 @@ export function calculateKeywordMatch(resumeText: string, jobDescriptionText: st
     }
   });
 
-  // Find missing important keywords from job description
+  // Missing keywords
   jobKeywords.keywords.forEach(keyword => {
-    if (!resumeKeywords.keywords.includes(keyword.toLowerCase()) {
-      const relevance = 
+    if (!resumeKeywords.keywords.includes(keyword.toLowerCase())) {
+      const relevance =
         (jobKeywords.importance.get(keyword) || 0) >= 3 ? 'high' :
         (jobKeywords.importance.get(keyword) || 0) >= 2 ? 'medium' : 'low';
 
-      // Only include missing keywords with medium or high importance
       if (relevance !== 'low') {
-        missing.push({
-          keyword,
-          relevance
-        });
+        missing.push({ keyword, relevance });
       }
-    });
+    }
   });
 
-  // Calculate score based on matched keywords and their importance
   let totalImportance = 0;
   let matchedImportance = 0;
 
@@ -157,18 +151,13 @@ export function calculateKeywordMatch(resumeText: string, jobDescriptionText: st
 
   const score = totalImportance > 0 ? Math.round((matchedImportance / totalImportance) * 100) : 0;
 
-  return {
-    score,
-    matched,
-    missing
-  };
+  return { score, matched, missing };
 }
 
-// Check resume formatting for ATS compatibility
+// Check resume formatting
 export function checkFormatting(resumeText: string): FormattingResult {
   const issues: FormattingIssue[] = [];
 
-  // Check for tables (not ATS friendly)
   if (resumeText.includes('|') && resumeText.includes('-')) {
     issues.push({
       type: 'table',
@@ -177,10 +166,9 @@ export function checkFormatting(resumeText: string): FormattingResult {
     });
   }
 
-  // Check for standard section headings
   const standardSections = ['Experience', 'Education', 'Skills', 'Summary', 'Projects'];
-  const hasStandardSections = standardSections.some(section => 
-    new RegExp(`\b${section}\b`, 'i').test(resumeText)
+  const hasStandardSections = standardSections.some(section =>
+    new RegExp(`\\b${section}\\b`, 'i').test(resumeText)
   );
 
   if (!hasStandardSections) {
@@ -191,10 +179,8 @@ export function checkFormatting(resumeText: string): FormattingResult {
     });
   }
 
-  // Check for special characters
-  const specialChars = /[^\w\s.,;:()[\]{}@#%&*+=<>'"\/\|`~]/g;
+  const specialChars = /[^\w\s.,;:()[\]{}@#%&*+=<>'"\/|`~]/g;
   const specialCharMatches = resumeText.match(specialChars);
-
   if (specialCharMatches && specialCharMatches.length > 5) {
     issues.push({
       type: 'special_chars',
@@ -203,10 +189,8 @@ export function checkFormatting(resumeText: string): FormattingResult {
     });
   }
 
-  // Check for bullet points (good for ATS)
   const bulletPoints = resumeText.match(/^[\s]*[-•*]/gm);
   const hasBulletPoints = bulletPoints && bulletPoints.length > 5;
-
   if (!hasBulletPoints) {
     issues.push({
       type: 'bullets',
@@ -215,7 +199,6 @@ export function checkFormatting(resumeText: string): FormattingResult {
     });
   }
 
-  // Calculate score based on issues
   let score = 100;
   issues.forEach(issue => {
     switch (issue.severity) {
@@ -225,15 +208,10 @@ export function checkFormatting(resumeText: string): FormattingResult {
     }
   });
 
-  score = Math.max(0, score);
-
-  return {
-    score,
-    issues
-  };
+  return { score: Math.max(0, score), issues };
 }
 
-// Check skills alignment between resume and job description
+// Skills alignment
 export function checkSkillsAlignment(resumeText: string, jobDescriptionText: string): SkillsAlignmentResult {
   const resumeKeywords = extractKeywords(resumeText);
   const jobKeywords = extractKeywords(jobDescriptionText);
@@ -241,83 +219,55 @@ export function checkSkillsAlignment(resumeText: string, jobDescriptionText: str
   const matchedSkills: SkillMatch[] = [];
   const missingSkills: MissingSkill[] = [];
 
-  // Find matched skills
   resumeKeywords.keywords.forEach(keyword => {
     if (jobKeywords.keywords.includes(keyword.toLowerCase())) {
-      const importance = jobKeywords.importance.get(keyword) || 1;
-
-      // Determine skill level based on context (simplified)
-      const level = 
+      const level =
         resumeText.toLowerCase().includes(`${keyword.toLowerCase()} expert`) ||
         resumeText.toLowerCase().includes(`${keyword.toLowerCase()} senior`) ? 'Expert' :
         resumeText.toLowerCase().includes(`${keyword.toLowerCase()} advanced`) ? 'Advanced' :
         resumeText.toLowerCase().includes(`${keyword.toLowerCase()} intermediate`) ? 'Intermediate' :
-        resumeText.toLowerCase().includes(`${keyword.toLowerCase()} junior`) || 
+        resumeText.toLowerCase().includes(`${keyword.toLowerCase()} junior`) ||
         resumeText.toLowerCase().includes(`${keyword.toLowerCase()} beginner`) ? 'Beginner' : 'Intermediate';
 
-      matchedSkills.push({
-        skill: keyword,
-        level
-      });
+      matchedSkills.push({ skill: keyword, level });
     }
   });
 
-  // Find missing important skills from job description
   jobKeywords.keywords.forEach(keyword => {
     if (!resumeKeywords.keywords.includes(keyword.toLowerCase())) {
-      const importance = 
+      const importance =
         (jobKeywords.importance.get(keyword) || 0) >= 3 ? 'high' :
         (jobKeywords.importance.get(keyword) || 0) >= 2 ? 'medium' : 'low';
 
-      // Only include missing skills with medium or high importance
-      if (importance !== 'low') {
-        missingSkills.push({
-          skill: keyword,
-          importance
-        });
-      }
+      if (importance !== 'low') missingSkills.push({ skill: keyword, importance });
     }
   });
 
-  // Calculate score based on matched skills and their importance
   let totalImportance = 0;
   let matchedImportance = 0;
 
   jobKeywords.keywords.forEach(keyword => {
     const importance = jobKeywords.importance.get(keyword) || 1;
     totalImportance += importance;
-
-    if (resumeKeywords.keywords.includes(keyword.toLowerCase())) {
-      matchedImportance += importance;
-    }
+    if (resumeKeywords.keywords.includes(keyword.toLowerCase())) matchedImportance += importance;
   });
 
   const score = totalImportance > 0 ? Math.round((matchedImportance / totalImportance) * 100) : 0;
 
-  return {
-    score,
-    matchedSkills,
-    missingSkills
-  };
+  return { score, matchedSkills, missingSkills };
 }
 
-// Calculate overall ATS score
+// Overall ATS Score
 export function calculateATSScore(resumeText: string, jobDescriptionText: string): ATSScoreResult {
   const keywordMatch = calculateKeywordMatch(resumeText, jobDescriptionText);
   const formatting = checkFormatting(resumeText);
   const skillsAlignment = checkSkillsAlignment(resumeText, jobDescriptionText);
 
-  // Calculate overall score with weighted components
   const overallScore = Math.round(
-    (keywordMatch.score * 0.4) + 
-    (formatting.score * 0.3) + 
-    (skillsAlignment.score * 0.3)
+    keywordMatch.score * 0.4 +
+    formatting.score * 0.3 +
+    skillsAlignment.score * 0.3
   );
 
-  return {
-    overallScore,
-    keywordMatch,
-    formatting,
-    skillsAlignment
-  };
+  return { overallScore, keywordMatch, formatting, skillsAlignment };
 }
