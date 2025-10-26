@@ -1,0 +1,161 @@
+export default function HealthcareTemplate({ data }) {
+  return (
+    <div className="p-8 bg-gradient-to-br from-blue-50 to-teal-50 text-gray-800" id="resume-preview">
+      {/* Healthcare Header */}
+      <header className="mb-8 pb-6 border-b-2 border-teal-600">
+        <div className="flex items-center gap-6">
+          <div className="w-24 h-24 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full"></div>
+          <div>
+            <h1 className="text-4xl font-bold mb-2 text-teal-900">{data.name || "John Doe"}</h1>
+            <h2 className="text-xl text-teal-700 mb-4">{data.title || "Healthcare Professional"}</h2>
+            <div className="flex flex-wrap gap-4 text-sm text-teal-600">
+              {data.contact?.email && <span>{data.contact.email}</span>}
+              {data.contact?.phone && <span>{data.contact.phone}</span>}
+              {data.contact?.location && <span>{data.contact.location}</span>}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Healthcare Summary */}
+      {data.summary && (
+        <section className="mb-8 p-6 bg-white rounded-lg shadow-md">
+          <h3 className="text-xl font-bold mb-3 text-teal-900 flex items-center">
+            <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+            Professional Summary
+          </h3>
+          <p className="text-gray-700 leading-relaxed">{data.summary}</p>
+        </section>
+      )}
+
+      {/* Two Column Layout */}
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Left Column */}
+        <div className="md:w-3/5">
+          {/* Experience Section */}
+          {data.experience && data.experience.length > 0 && (
+            <section className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-teal-900 flex items-center">
+                <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+                Clinical Experience
+              </h3>
+              {data.experience.map((exp, i) => (
+                <div key={i} className="mb-6 p-4 bg-white rounded-lg shadow-md">
+                  <div className="flex justify-between mb-2">
+                    <h4 className="text-lg font-bold text-teal-900">{exp.role}</h4>
+                    <span className="text-sm text-teal-600 bg-teal-100 px-2 py-1 rounded-full">{exp.duration}</span>
+                  </div>
+                  <p className="text-teal-700 font-medium mb-2">{exp.company}</p>
+                  {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
+                  {exp.highlights && (
+                    <ul className="list-disc pl-5 text-gray-700">
+                      {exp.highlights.map((highlight, j) => (
+                        <li key={j} className="mb-1">{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </section>
+          )}
+
+          {/* Education Section */}
+          {data.education && data.education.length > 0 && (
+            <section className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-teal-900 flex items-center">
+                <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+                Medical Education
+              </h3>
+              {data.education.map((edu, i) => (
+                <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
+                  <div className="flex justify-between mb-2">
+                    <h4 className="text-lg font-bold text-teal-900">{edu.degree}</h4>
+                    <span className="text-sm text-teal-600 bg-teal-100 px-2 py-1 rounded-full">{edu.duration}</span>
+                  </div>
+                  <p className="text-teal-700 font-medium mb-1">{edu.institution}</p>
+                  {edu.details && <p className="text-gray-700 text-sm">{edu.details}</p>}
+                </div>
+              ))}
+            </section>
+          )}
+        </div>
+
+        {/* Right Column */}
+        <div className="md:w-2/5">
+          {/* Certifications Section */}
+          {data.certifications && data.certifications.length > 0 && (
+            <section className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-teal-900 flex items-center">
+                <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+                Certifications
+              </h3>
+              <div className="p-4 bg-white rounded-lg shadow-md">
+                <ul className="list-disc pl-5 text-gray-700">
+                  {data.certifications.map((cert, i) => (
+                    <li key={i} className="mb-1 text-sm">{cert}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
+
+          {/* Skills Section */}
+          {data.skills && data.skills.length > 0 && (
+            <section className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-teal-900 flex items-center">
+                <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+                Clinical Skills
+              </h3>
+              <div className="p-4 bg-white rounded-lg shadow-md">
+                <div className="flex flex-wrap gap-2">
+                  {data.skills.map((skill, i) => (
+                    <span key={i} className="px-3 py-1 bg-gradient-to-r from-teal-100 to-blue-100 rounded-full text-sm text-teal-700">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Projects Section */}
+          {data.projects && data.projects.length > 0 && (
+            <section className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-teal-900 flex items-center">
+                <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+                Research Projects
+              </h3>
+              {data.projects.map((project, i) => (
+                <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
+                  <h4 className="text-lg font-bold text-teal-900 mb-1">{project.name}</h4>
+                  <p className="text-sm text-teal-600 mb-2">{project.duration}</p>
+                  {project.description && <p className="text-gray-700 text-sm mb-2">{project.description}</p>}
+                  {project.technologies && (
+                    <p className="text-xs text-teal-600">
+                      <span className="font-medium">Methods:</span> {project.technologies.join(', ')}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </section>
+          )}
+
+          {/* Achievements Section */}
+          {data.achievements && data.achievements.length > 0 && (
+            <section>
+              <h3 className="text-xl font-bold mb-4 text-teal-900 flex items-center">
+                <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
+                Professional Achievements
+              </h3>
+              <div className="p-4 bg-white rounded-lg shadow-md">
+                <ul className="list-disc pl-5 text-gray-700">
+                  {data.achievements.map((achievement, i) => (
+                    <li key={i} className="mb-1 text-sm">{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

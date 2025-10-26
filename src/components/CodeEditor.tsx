@@ -105,6 +105,32 @@ const templates = [
   { id: "VisualImpactTemplate", name: "Visual Impact" },
   { id: "ModernElegantTemplate", name: "Modern Elegant" },
   { id: "CreativePortfolioTemplate", name: "Creative Portfolio" },
+  
+  // New templates
+  { id: "ModernMinimalTemplate", name: "Modern Minimal" },
+  { id: "ExecutiveTemplate", name: "Executive" },
+  { id: "CreativeDesignTemplate", name: "Creative Design" },
+  { id: "TechInnovatorTemplate", name: "Tech Innovator" },
+  { id: "AcademicTemplate", name: "Academic" },
+  { id: "HealthcareTemplate", name: "Healthcare" },
+  { id: "SalesTemplate", name: "Sales" },
+  { id: "LegalTemplate", name: "Legal" },
+  { id: "FashionTemplate", name: "Fashion" },
+  { id: "FinanceTemplate", name: "Finance" },
+  { id: "EducationTemplate", name: "Education" },
+  { id: "MarketingTemplate", name: "Marketing" },
+  { id: "HospitalityTemplate", name: "Hospitality" },
+  { id: "EngineeringTemplate", name: "Engineering" },
+  { id: "ArtisticTemplate", name: "Artistic" },
+  { id: "ConsultingTemplate", name: "Consulting" },
+  { id: "HealthcareTechTemplate", name: "Healthcare Tech" },
+  { id: "NonProfitTemplate", name: "Non Profit" },
+  { id: "StartupTemplate", name: "Startup" },
+  { id: "DataScienceTemplate", name: "Data Science" },
+  { id: "EntrepreneurTemplate", name: "Entrepreneur" },
+  { id: "RealEstateTemplate", name: "Real Estate" },
+  { id: "MediaTemplate", name: "Media" },
+  { id: "CulinaryTemplate", name: "Culinary" },
 ];
 
 
@@ -188,8 +214,30 @@ export default function CodeEditor({
     }
   };
 
-  const handleTemplateChange = (templateId: string) => {
+  const handleTemplateChange = async (templateId: string) => {
     setSelectedTemplate(templateId);
+    
+    // Load template-specific data
+    try {
+      let dataFileName = templateId;
+      // Handle special cases for template names
+      if (templateId.endsWith('Improved')) {
+        // For improved templates, remove "Improved" and add "Data"
+        dataFileName = templateId.replace('Improved', '') + 'Data';
+      } else if (!templateId.endsWith('Data')) {
+        // For regular templates, add "Data" if not present
+        dataFileName = templateId.replace('Template', 'TemplateData');
+      }
+      
+      const templateData = await import(`@/components/resume-templates/${dataFileName}`);
+      setContent(JSON.stringify(templateData.default, null, 2));
+      if (onChange) {
+        onChange(JSON.stringify(templateData.default, null, 2));
+      }
+    } catch (error) {
+      console.error("Error loading template data:", error);
+    }
+    
     if (onTemplateChange) {
       onTemplateChange(templateId);
     }
