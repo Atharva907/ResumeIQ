@@ -1,4 +1,4 @@
-export default function FinanceTemplate({ data }) {
+export default function FinanceTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 text-gray-800" id="resume-preview">
       {/* Finance Header */}
@@ -49,7 +49,7 @@ export default function FinanceTemplate({ data }) {
                 <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
                 Finance Experience
               </h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-indigo-900">{exp.role}</h4>
@@ -59,7 +59,7 @@ export default function FinanceTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -76,7 +76,7 @@ export default function FinanceTemplate({ data }) {
                 <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
                 Finance Education
               </h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-indigo-900">{edu.degree}</h4>
@@ -101,8 +101,8 @@ export default function FinanceTemplate({ data }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <div className="flex flex-wrap gap-2">
-                  {data.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-blue-100 rounded-full text-sm text-indigo-700">{skill}</span>
+                  {data.skills.map((skill: any, i: number) => (
+                    <span key={i} className="px-3 py-1 bg-linear-to-r from-indigo-100 to-blue-100 rounded-full text-sm text-indigo-700">{skill}</span>
                   ))}
                 </div>
               </div>
@@ -118,7 +118,7 @@ export default function FinanceTemplate({ data }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <ul className="list-disc pl-5 text-gray-700">
-                  {data.certifications.map((cert, i) => (
+                  {data.certifications.map((cert: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{cert}</li>
                   ))}
                 </ul>

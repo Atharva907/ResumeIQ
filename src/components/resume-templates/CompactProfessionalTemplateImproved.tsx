@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 
-export default function CompactProfessionalTemplateImproved({ data }) {
+export default function CompactProfessionalTemplateImproved({ data }: { data: any }) {
   return (
     <div className="min-h-[29.7cm] w-[21cm] mx-auto bg-white shadow-lg" id="resume-preview">
       {/* Compact header with name and title */}
@@ -61,7 +61,7 @@ export default function CompactProfessionalTemplateImproved({ data }) {
             {data.experience && data.experience.length > 0 && (
               <section className="mb-4">
                 <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300">Experience</h2>
-                {data.experience.map((exp, i) => (
+                {data.experience.map((exp: any, i: number) => (
                   <div key={i} className="mb-3 border-l-2 border-gray-400 pl-3">
                     <div className="mb-1">
                       <div className="flex justify-between mb-1">
@@ -75,7 +75,7 @@ export default function CompactProfessionalTemplateImproved({ data }) {
 
                     {exp.highlights && (
                       <ul className="mt-1 ml-4 list-disc text-xs text-gray-700 space-y-1">
-                        {exp.highlights.map((highlight, j) => (
+                        {exp.highlights.map((highlight: any, j: number) => (
                           <li key={j}>{highlight}</li>
                         ))}
                       </ul>
@@ -88,7 +88,7 @@ export default function CompactProfessionalTemplateImproved({ data }) {
             {data.education && data.education.length > 0 && (
               <section className="mb-4">
                 <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300">Education</h2>
-                {data.education.map((edu, i) => (
+                {data.education.map((edu: any, i: number) => (
                   <div key={i} className="mb-2 border-l-2 border-gray-400 pl-3">
                     <div className="mb-1">
                       <div className="flex justify-between mb-1">
@@ -111,7 +111,7 @@ export default function CompactProfessionalTemplateImproved({ data }) {
               <section className="mb-4">
                 <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300">Skills</h2>
                 <div className="space-y-1">
-                  {data.skills.map((skill, i) => (
+                  {data.skills.map((skill: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                       <span className="text-xs">{skill}</span>
@@ -124,7 +124,7 @@ export default function CompactProfessionalTemplateImproved({ data }) {
             {data.projects && data.projects.length > 0 && (
               <section className="mb-4">
                 <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300">Projects</h2>
-                {data.projects.map((project, i) => (
+                {data.projects.map((project: any, i: number) => (
                   <div key={i} className="mb-3 p-3 bg-gray-50 rounded-sm border-l-2 border-gray-400">
                     <div className="flex justify-between mb-1">
                       <h3 className="text-base font-semibold">{project.name}</h3>

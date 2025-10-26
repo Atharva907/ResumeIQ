@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Globe, Github, Linkedin } from "lucide-react";
 
-export default function CreativeSplitTemplate({ data }) {
+export default function CreativeSplitTemplate({ data }: { data: any }) {
   return (
     <div className="flex bg-white text-gray-800" id="resume-preview">
       {/* Left Sidebar */}
@@ -56,7 +56,7 @@ export default function CreativeSplitTemplate({ data }) {
           <div className="mb-8">
             <h2 className="text-lg font-semibold mb-3 border-b border-indigo-700 pb-1">Skills</h2>
             <div className="space-y-2 text-sm">
-              {data.skills.map((skill, i) => (
+              {data.skills.map((skill: any, i: number) => (
                 <div key={i} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-indigo-300 rounded-full"></div>
                   <span>{skill}</span>
@@ -93,7 +93,7 @@ export default function CreativeSplitTemplate({ data }) {
         {data.experience && data.experience.length > 0 && (
           <section className="mb-6">
             <h2 className="text-xl font-bold mb-3 text-indigo-900">Experience</h2>
-            {data.experience.map((exp, i) => (
+            {data.experience.map((exp: any, i: number) => (
               <div key={i} className="mb-4">
                 <div className="flex justify-between mb-1">
                   <h3 className="font-bold">{exp.role}</h3>
@@ -103,7 +103,7 @@ export default function CreativeSplitTemplate({ data }) {
                 {exp.description && <p className="text-sm mb-2">{exp.description}</p>}
                 {exp.highlights && (
                   <ul className="ml-5 list-disc text-sm">
-                    {exp.highlights.map((highlight, j) => (
+                    {exp.highlights.map((highlight: any, j: number) => (
                       <li key={j} className="mb-1">{highlight}</li>
                     ))}
                   </ul>
@@ -116,7 +116,7 @@ export default function CreativeSplitTemplate({ data }) {
         {data.education && data.education.length > 0 && (
           <section className="mb-6">
             <h2 className="text-xl font-bold mb-3 text-indigo-900">Education</h2>
-            {data.education.map((edu, i) => (
+            {data.education.map((edu: any, i: number) => (
               <div key={i} className="mb-3">
                 <div className="flex justify-between mb-1">
                   <h3 className="font-bold">{edu.degree}</h3>
@@ -132,7 +132,7 @@ export default function CreativeSplitTemplate({ data }) {
         {data.projects && data.projects.length > 0 && (
           <section className="mb-6">
             <h2 className="text-xl font-bold mb-3 text-indigo-900">Projects</h2>
-            {data.projects.map((project, i) => (
+            {data.projects.map((project: any, i: number) => (
               <div key={i} className="mb-3">
                 <div className="flex justify-between mb-1">
                   <h3 className="font-bold">{project.name}</h3>

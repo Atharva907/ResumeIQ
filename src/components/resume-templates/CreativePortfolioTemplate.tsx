@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Linkedin, Github, Globe, Calendar } from "lucide-react";
 
-export default function CreativePortfolioTemplate({ data }) {
+export default function CreativePortfolioTemplate({ data }: { data: any }) {
   return (
     <div className="p-0 text-gray-800 bg-gradient-to-br from-slate-50 to-blue-50" id="resume-preview">
       {/* Creative header with overlapping elements */}
@@ -34,7 +34,7 @@ export default function CreativePortfolioTemplate({ data }) {
 
             {/* Name and title with creative styling */}
             <div className="text-center md:text-left">
-              <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold mb-2 bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 {data.name || "John Doe"}
               </h1>
               <h2 className="text-xl text-gray-600 mb-4">{data.title || "Software Engineer"}</h2>
@@ -102,7 +102,7 @@ export default function CreativePortfolioTemplate({ data }) {
           <section className="mb-10">
             <h2 className="text-2xl font-bold mb-6 text-blue-600">Professional Journey</h2>
             <div className="space-y-6">
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="bg-white rounded-2xl shadow-xl p-6 relative overflow-hidden">
                   {/* Decorative element */}
                   <div className={`absolute top-0 right-0 w-24 h-24 rounded-bl-full opacity-20 ${
@@ -114,7 +114,7 @@ export default function CreativePortfolioTemplate({ data }) {
                       <h3 className="text-xl font-bold text-gray-800">{exp.role}</h3>
                       <h4 className="text-lg text-blue-600 font-medium">{exp.company}</h4>
                     </div>
-                    <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">
+                    <div className="bg-linear-to-r from-blue-500 to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">
                       {exp.duration}
                     </div>
                   </div>
@@ -125,7 +125,7 @@ export default function CreativePortfolioTemplate({ data }) {
 
                   {exp.highlights && (
                     <ul className="space-y-2">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="flex items-start gap-3">
                           <div className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5 ${
                             i % 3 === 0 ? 'bg-blue-500' : i % 3 === 1 ? 'bg-indigo-500' : 'bg-purple-500'
@@ -150,7 +150,7 @@ export default function CreativePortfolioTemplate({ data }) {
             <section>
               <h2 className="text-2xl font-bold mb-6 text-blue-600">Education</h2>
               <div className="space-y-4">
-                {data.education.map((edu, i) => (
+                {data.education.map((edu: any, i: number) => (
                   <div key={i} className="bg-white rounded-2xl shadow-xl p-6 relative overflow-hidden">
                     {/* Decorative element */}
                     <div className={`absolute top-0 left-0 w-20 h-20 rounded-br-full opacity-20 ${
@@ -175,8 +175,8 @@ export default function CreativePortfolioTemplate({ data }) {
               <h2 className="text-2xl font-bold mb-6 text-blue-600">Skills & Expertise</h2>
               <div className="bg-white rounded-2xl shadow-xl p-6">
                 <div className="grid grid-cols-2 gap-4">
-                  {data.skills.map((skill, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
+                  {data.skills.map((skill: any, i: number) => (
+                    <div key={i} className="flex items-center gap-3 p-3 bg-linear-to-r from-blue-50 to-indigo-50 rounded-xl">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${
                         i % 3 === 0 ? 'bg-blue-500' : i % 3 === 1 ? 'bg-indigo-500' : 'bg-purple-500'
                       }`}>
@@ -196,10 +196,10 @@ export default function CreativePortfolioTemplate({ data }) {
           <section>
             <h2 className="text-2xl font-bold mb-6 text-blue-600">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
                   {/* Project header with gradient */}
-                  <div className={`bg-gradient-to-r h-2 ${
+                  <div className={`bg-linear-to-r h-2 ${
                     i % 3 === 0 ? 'from-blue-400 to-blue-600' : 
                     i % 3 === 1 ? 'from-indigo-400 to-indigo-600' : 
                     'from-purple-400 to-purple-600'

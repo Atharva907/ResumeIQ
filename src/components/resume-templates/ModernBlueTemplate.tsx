@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 
-export default function ModernBlueTemplate({ data }) {
+export default function ModernBlueTemplate({ data }: { data: any }) {
   return (
     <div className="p-6 font-sans text-gray-800 bg-white" id="resume-preview">
       <div className="bg-blue-600 text-white p-6 -m-6 mb-6">
@@ -50,7 +50,7 @@ export default function ModernBlueTemplate({ data }) {
       {data.experience && data.experience.length > 0 && (
         <section className="mb-6">
           <h2 className="font-semibold text-xl text-blue-600 mb-3 border-b-2 border-blue-200 pb-1">Experience</h2>
-          {data.experience.map((exp, i) => (
+          {data.experience.map((exp: any, i: number) => (
             <div key={i} className="mb-4">
               <div className="flex justify-between mb-1">
                 <p className="font-medium text-lg">{exp.role}</p>
@@ -60,7 +60,7 @@ export default function ModernBlueTemplate({ data }) {
               {exp.description && <p className="text-sm text-gray-700 mb-2">{exp.description}</p>}
               {exp.highlights && (
                 <ul className="ml-5 list-disc text-sm">
-                  {exp.highlights.map((highlight, j) => (
+                  {exp.highlights.map((highlight: any, j: number) => (
                     <li key={j} className="mb-1">{highlight}</li>
                   ))}
                 </ul>
@@ -73,7 +73,7 @@ export default function ModernBlueTemplate({ data }) {
       {data.education && data.education.length > 0 && (
         <section className="mb-6">
           <h2 className="font-semibold text-xl text-blue-600 mb-3 border-b-2 border-blue-200 pb-1">Education</h2>
-          {data.education.map((edu, i) => (
+          {data.education.map((edu: any, i: number) => (
             <div key={i} className="mb-2">
               <div className="flex justify-between">
                 <p className="font-medium text-lg">{edu.degree}</p>
@@ -90,7 +90,7 @@ export default function ModernBlueTemplate({ data }) {
         <section className="mb-6">
           <h2 className="font-semibold text-xl text-blue-600 mb-3 border-b-2 border-blue-200 pb-1">Skills</h2>
           <div className="grid grid-cols-2 gap-2">
-            {data.skills.map((skill, i) => (
+            {data.skills.map((skill: any, i: number) => (
               <div key={i} className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                 <span className="text-sm">{skill}</span>

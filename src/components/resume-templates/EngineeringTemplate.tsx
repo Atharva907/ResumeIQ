@@ -1,4 +1,4 @@
-export default function EngineeringTemplate({ data }) {
+export default function EngineeringTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 text-gray-800" id="resume-preview">
       {/* Engineering Header */}
@@ -49,7 +49,7 @@ export default function EngineeringTemplate({ data }) {
                 <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                 Engineering Experience
               </h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-blue-900">{exp.role}</h4>
@@ -59,7 +59,7 @@ export default function EngineeringTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -76,7 +76,7 @@ export default function EngineeringTemplate({ data }) {
                 <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                 Engineering Education
               </h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-blue-900">{edu.degree}</h4>
@@ -101,8 +101,8 @@ export default function EngineeringTemplate({ data }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <div className="flex flex-wrap gap-2">
-                  {data.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-gradient-to-r from-blue-100 to-gray-100 rounded-full text-sm text-blue-700">{skill}</span>
+                  {data.skills.map((skill: any, i: number) => (
+                    <span key={i} className="px-3 py-1 bg-linear-to-r from-blue-100 to-gray-100 rounded-full text-sm text-blue-700">{skill}</span>
                   ))}
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function EngineeringTemplate({ data }) {
                 <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                 Engineering Projects
               </h3>
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <h4 className="text-lg font-bold text-blue-900 mb-1">{project.name}</h4>
                   <p className="text-sm text-blue-600 mb-2">{project.duration}</p>

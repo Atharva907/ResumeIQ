@@ -1,3 +1,5 @@
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
+
 export default function AcademicTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-white text-gray-800" id="resume-preview">
@@ -90,7 +92,7 @@ export default function AcademicTemplate({ data }: { data: any }) {
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Research Skills</h3>
               <div className="flex flex-wrap gap-2">
-                {data.skills.map((skill, i) => (
+                {data.skills.map((skill: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, i: Key | null | undefined) => (
                   <span key={i} className="px-3 py-1 bg-gray-100 rounded-md text-sm text-gray-700">{skill}</span>
                 ))}
               </div>
@@ -101,7 +103,7 @@ export default function AcademicTemplate({ data }: { data: any }) {
           {data.projects && data.projects.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Research Projects</h3>
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: { name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; duration: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; description: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; technologies: any[]; }, i: Key | null | undefined) => (
                 <div key={i} className="mb-4 p-4 bg-gray-50 rounded-md">
                   <h4 className="text-lg font-medium text-gray-900 mb-1">{project.name}</h4>
                   <p className="text-sm text-gray-500 mb-2">{project.duration}</p>
@@ -121,7 +123,7 @@ export default function AcademicTemplate({ data }: { data: any }) {
             <section>
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Awards & Honors</h3>
               <ul className="list-disc pl-5 text-gray-700">
-                {data.achievements.map((achievement, i) => (
+                {data.achievements.map((achievement: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, i: Key | null | undefined) => (
                   <li key={i} className="mb-1 text-sm">{achievement}</li>
                 ))}
               </ul>

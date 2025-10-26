@@ -1,4 +1,4 @@
-export default function ExecutiveTemplate({ data }) {
+export default function ExecutiveTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-white text-gray-800" id="resume-preview">
       {/* Executive Header */}
@@ -32,7 +32,7 @@ export default function ExecutiveTemplate({ data }) {
           {data.experience && data.experience.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Professional Experience</h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 pb-4 border-l-4 border-gray-800 pl-5">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-gray-900">{exp.role}</h4>
@@ -42,7 +42,7 @@ export default function ExecutiveTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-3">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-2">{highlight}</li>
                       ))}
                     </ul>
@@ -56,7 +56,7 @@ export default function ExecutiveTemplate({ data }) {
           {data.education && data.education.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Education</h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 pb-4 border-l-4 border-gray-800 pl-5">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-gray-900">{edu.degree}</h4>
@@ -77,7 +77,7 @@ export default function ExecutiveTemplate({ data }) {
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Core Competencies</h3>
               <div className="grid grid-cols-2 gap-2">
-                {data.skills.map((skill, i) => (
+                {data.skills.map((skill: any, i: number) => (
                   <div key={i} className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-gray-800 rounded-full"></div>
                     <span className="text-sm text-gray-700">{skill}</span>
@@ -91,7 +91,7 @@ export default function ExecutiveTemplate({ data }) {
           {data.projects && data.projects.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Key Projects</h3>
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-gray-50 rounded-md">
                   <h4 className="text-lg font-bold text-gray-900 mb-1">{project.name}</h4>
                   <p className="text-sm text-gray-600 mb-2">{project.duration}</p>

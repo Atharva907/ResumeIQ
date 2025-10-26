@@ -1,11 +1,11 @@
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 
-export default function VisualImpactTemplateImproved({ data }) {
+export default function VisualImpactTemplateImproved({ data }: { data: any }) {
   return (
     <div className="min-h-[29.7cm] w-[21cm] mx-auto bg-white shadow-lg" id="resume-preview">
       {/* Visual impact header */}
       <header className="relative overflow-hidden rounded-t-lg">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 h-32"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-red-500 to-orange-500 h-32"></div>
         <div className="relative z-10 p-6 text-white">
           <div className="flex justify-between items-start">
             <div>
@@ -59,18 +59,18 @@ export default function VisualImpactTemplateImproved({ data }) {
           <div className="flex-1">
             {data.summary && (
               <section className="mb-6">
-                <h2 className="text-xl font-bold mb-3 pb-2 border-b-2 border-red-600 bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Summary</h2>
+                <h2 className="text-xl font-bold mb-3 pb-2 border-b-2 border-red-600 bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Summary</h2>
                 <p className="leading-relaxed text-justify">{data.summary}</p>
               </section>
             )}
 
             {data.experience && data.experience.length > 0 && (
               <section className="mb-6">
-                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Experience</h2>
-                {data.experience.map((exp, i) => (
+                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Experience</h2>
+                {data.experience.map((exp: any, i: number) => (
                   <div key={i} className="mb-5 border-l-2 border-red-600 pl-5 relative">
                     {/* Timeline dot */}
-                    <div className="absolute -left-[5px] top-0 w-3 h-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+                    <div className="absolute -left-[5px] top-0 w-3 h-3 bg-linear-to-r from-red-500 to-orange-500 rounded-full"></div>
 
                     <div className="mb-2">
                       <div className="flex justify-between mb-1">
@@ -84,7 +84,7 @@ export default function VisualImpactTemplateImproved({ data }) {
 
                     {exp.highlights && (
                       <ul className="mt-2 ml-4 list-disc text-sm text-gray-700 space-y-1">
-                        {exp.highlights.map((highlight, j) => (
+                        {exp.highlights.map((highlight: any, j: number) => (
                           <li key={j}>{highlight}</li>
                         ))}
                       </ul>
@@ -96,11 +96,11 @@ export default function VisualImpactTemplateImproved({ data }) {
 
             {data.education && data.education.length > 0 && (
               <section className="mb-6">
-                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Education</h2>
-                {data.education.map((edu, i) => (
+                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Education</h2>
+                {data.education.map((edu: any, i: number) => (
                   <div key={i} className="mb-3 border-l-2 border-red-600 pl-5 relative">
                     {/* Timeline dot */}
-                    <div className="absolute -left-[5px] top-0 w-3 h-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+                    <div className="absolute -left-[5px] top-0 w-3 h-3 bg-linear-to-r from-red-500 to-orange-500 rounded-full"></div>
 
                     <div className="mb-1">
                       <div className="flex justify-between mb-1">
@@ -121,11 +121,11 @@ export default function VisualImpactTemplateImproved({ data }) {
           <div className="w-full lg:w-1/3 lg:sticky lg:top-6 lg:self-start">
             {data.skills && data.skills.length > 0 && (
               <section className="mb-6">
-                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Skills</h2>
+                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Skills</h2>
                 <div className="grid grid-cols-2 gap-2">
-                  {data.skills.map((skill, i) => (
+                  {data.skills.map((skill: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-linear-to-r from-red-500 to-orange-500 rounded-full flex-shrink-0"></div>
                       <span className="text-sm truncate">{skill}</span>
                     </div>
                   ))}
@@ -135,8 +135,8 @@ export default function VisualImpactTemplateImproved({ data }) {
 
             {data.projects && data.projects.length > 0 && (
               <section className="mb-6">
-                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Projects</h2>
-                {data.projects.map((project, i) => (
+                <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Projects</h2>
+                {data.projects.map((project: any, i: number) => (
                   <div key={i} className="mb-4 p-4 bg-gradient-to-br from-red-50 to-orange-50 rounded-md border-l-2 border-red-600">
                     <div className="flex justify-between mb-2">
                       <h3 className="text-lg font-semibold">{project.name}</h3>

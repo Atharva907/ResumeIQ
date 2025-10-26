@@ -1,10 +1,10 @@
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 
-export default function ModernBlueTemplateImproved({ data }) {
+export default function ModernBlueTemplateImproved({ data }: { data: any }) {
   return (
     <div className="min-h-[29.7cm] w-[21cm] mx-auto bg-white shadow-lg" id="resume-preview">
       {/* Modern blue header with gradient background */}
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 rounded-t-lg">
+      <header className="bg-linear-to-r from-blue-600 to-blue-800 text-white p-6 rounded-t-lg">
         <div className="flex justify-between items-start">
           <div>
             <h1 className="text-3xl font-bold mb-2">{data.name || "John Doe"}</h1>
@@ -64,7 +64,7 @@ export default function ModernBlueTemplateImproved({ data }) {
             {data.experience && data.experience.length > 0 && (
               <section className="mb-6">
                 <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-blue-600 text-blue-600">Experience</h2>
-                {data.experience.map((exp, i) => (
+                {data.experience.map((exp: any, i: number) => (
                   <div key={i} className="mb-5 border-l-2 border-blue-600 pl-5 relative">
                     {/* Timeline dot */}
                     <div className="absolute -left-[5px] top-0 w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -81,7 +81,7 @@ export default function ModernBlueTemplateImproved({ data }) {
 
                     {exp.highlights && (
                       <ul className="mt-2 ml-4 list-disc text-sm text-gray-700 space-y-1">
-                        {exp.highlights.map((highlight, j) => (
+                        {exp.highlights.map((highlight: any, j: number) => (
                           <li key={j}>{highlight}</li>
                         ))}
                       </ul>
@@ -94,7 +94,7 @@ export default function ModernBlueTemplateImproved({ data }) {
             {data.education && data.education.length > 0 && (
               <section className="mb-6">
                 <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-blue-600 text-blue-600">Education</h2>
-                {data.education.map((edu, i) => (
+                {data.education.map((edu: any, i: number) => (
                   <div key={i} className="mb-3 border-l-2 border-blue-600 pl-5 relative">
                     {/* Timeline dot */}
                     <div className="absolute -left-[5px] top-0 w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -120,7 +120,7 @@ export default function ModernBlueTemplateImproved({ data }) {
               <section className="mb-6">
                 <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-blue-600 text-blue-600">Skills</h2>
                 <div className="grid grid-cols-1 gap-2">
-                  {data.skills.map((skill, i) => (
+                  {data.skills.map((skill: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                       <span className="text-sm">{skill}</span>
@@ -133,7 +133,7 @@ export default function ModernBlueTemplateImproved({ data }) {
             {data.projects && data.projects.length > 0 && (
               <section className="mb-6">
                 <h2 className="text-xl font-bold mb-4 pb-2 border-b-2 border-blue-600 text-blue-600">Projects</h2>
-                {data.projects.map((project, i) => (
+                {data.projects.map((project: any, i: number) => (
                   <div key={i} className="mb-4 p-4 bg-blue-50 rounded-md border border-blue-200">
                     <div className="flex justify-between mb-2">
                       <h3 className="text-lg font-semibold">{project.name}</h3>

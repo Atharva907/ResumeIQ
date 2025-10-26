@@ -174,7 +174,7 @@
 //       </div>
 
 //       <div className="container mx-auto p-6 relative z-10">
-//         <h1 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-yellow-600 to-foreground">
+//         <h1 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-foreground via-yellow-600 to-foreground">
 //           Choose a Resume Template
 //         </h1>
 
@@ -190,7 +190,7 @@
 
 //             return (
 //               <Card key={template.id} className="hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-yellow-400/50 overflow-hidden group">
-//                 <div className="h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 group-hover:h-2 transition-all duration-300"></div>
+//                 <div className="h-1 bg-linear-to-r from-yellow-400 to-yellow-600 group-hover:h-2 transition-all duration-300"></div>
 //                 <CardHeader className="pb-2">
 //                   <CardTitle className="text-lg font-semibold">{template.name}</CardTitle>
 //                   <p className="text-xs text-gray-500">Professional resume template</p>
@@ -427,7 +427,7 @@ export default function TemplatesPage() {
       </div>
 
       <div className="container mx-auto p-6 relative z-10">
-        <h1 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-yellow-600 to-foreground">
+        <h1 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-foreground via-yellow-600 to-foreground">
           Choose a Resume Template
         </h1>
 
@@ -444,7 +444,7 @@ export default function TemplatesPage() {
                 key={template.id}
                 className="hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-yellow-400/50 overflow-hidden group"
               >
-                <div className="h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 group-hover:h-2 transition-all duration-300"></div>
+                <div className="h-1 bg-linear-to-r from-yellow-400 to-yellow-600 group-hover:h-2 transition-all duration-300"></div>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg font-semibold">
                     {template.name}

@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
 
-export default function TechMinimalTemplate({ data }) {
+export default function TechMinimalTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 font-mono text-gray-800 bg-gray-50 border border-gray-200" id="resume-preview" style={{ fontFamily: 'monospace' }}>
       {/* Tech-style header */}
@@ -66,7 +66,7 @@ export default function TechMinimalTemplate({ data }) {
         <div className="bg-black p-4 rounded-md font-mono text-sm text-green-400 mb-6">
           <p>$ <span className="text-gray-400">ls</span> ~/experience</p>
           <div className="ml-4 mt-2 text-gray-300">
-            {data.experience.map((exp, i) => (
+            {data.experience.map((exp: any, i: number) => (
               <div key={i} className="mb-6 p-3 bg-gray-800 rounded-md border-l-2 border-green-400">
                 <div className="flex justify-between mb-2 items-center">
                   <p className="text-green-400 font-bold">{exp.role}</p>
@@ -78,7 +78,7 @@ export default function TechMinimalTemplate({ data }) {
                 )}
                 {exp.highlights && (
                   <ul className="space-y-1 text-sm">
-                    {exp.highlights.map((highlight, j) => (
+                    {exp.highlights.map((highlight: any, j: number) => (
                       <li key={j} className="flex items-start gap-2">
                         <span className="text-green-400">&gt;</span>
                         <span>{highlight}</span>
@@ -96,7 +96,7 @@ export default function TechMinimalTemplate({ data }) {
         <div className="bg-black p-4 rounded-md font-mono text-sm text-green-400 mb-6">
           <p>$ <span className="text-gray-400">cat</span> ~/education/credentials.txt</p>
           <div className="ml-4 mt-2 text-gray-300">
-            {data.education.map((edu, i) => (
+            {data.education.map((edu: any, i: number) => (
               <div key={i} className="mb-4 p-3 bg-gray-800 rounded-md border-l-2 border-blue-400">
                 <div className="flex justify-between mb-2 items-center">
                   <p className="text-blue-400 font-bold">{edu.degree}</p>
@@ -114,7 +114,7 @@ export default function TechMinimalTemplate({ data }) {
         <div className="bg-black p-4 rounded-md font-mono text-sm text-green-400 mb-6">
           <p>$ <span className="text-gray-400">cat</span> ~/tech-stack.txt</p>
           <div className="ml-4 mt-2 grid grid-cols-2 gap-3 text-gray-300">
-            {data.skills.map((skill, i) => (
+            {data.skills.map((skill: any, i: number) => (
               <div key={i} className="flex items-center gap-2 p-2 bg-gray-800 rounded border border-gray-700">
                 <span className="text-green-400">$</span>
                 <span>{skill}</span>
@@ -128,7 +128,7 @@ export default function TechMinimalTemplate({ data }) {
         <div className="bg-black p-4 rounded-md font-mono text-sm text-green-400 mb-6">
           <p>$ <span className="text-gray-400">ls</span> ~/projects</p>
           <div className="ml-4 mt-2 text-gray-300">
-            {data.projects.map((project, i) => (
+            {data.projects.map((project: any, i: number) => (
               <div key={i} className="mb-4 p-3 bg-gray-800 rounded-md border-l-2 border-purple-400">
                 <div className="flex justify-between mb-2 items-center">
                   <p className="text-purple-400 font-bold">{project.name}</p>

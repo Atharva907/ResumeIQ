@@ -1,10 +1,10 @@
 import { Mail, Phone, MapPin, Linkedin, Github, Globe } from "lucide-react";
 
-export default function ModernElegantTemplate({ data }) {
+export default function ModernElegantTemplate({ data }: { data: any }) {
   return (
     <div className="p-0 text-gray-800 bg-white shadow-xl" id="resume-preview">
       {/* Modern gradient header with profile image placeholder */}
-      <header className="relative bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 p-8 pb-16">
+      <header className="relative bg-linear-to-r from-indigo-600 via-purple-600 to-pink-500 p-8 pb-16">
         <div className="absolute top-4 right-4 w-24 h-24 bg-white rounded-full border-4 border-white shadow-lg flex items-center justify-center">
           <span className="text-3xl text-indigo-600 font-bold">
             {data.name ? data.name.split(" ").map(n => n[0]).join("").toUpperCase() : "JD"}
@@ -60,8 +60,8 @@ export default function ModernElegantTemplate({ data }) {
         {/* Summary section with modern card design */}
         {data.summary && (
           <section className="mb-8">
-            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 shadow-md">
-              <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+            <div className="bg-linear-to-r from-indigo-50 to-purple-50 rounded-xl p-6 shadow-md">
+              <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
                 About Me
               </h2>
               <p className="text-gray-700 leading-relaxed">{data.summary}</p>
@@ -72,11 +72,11 @@ export default function ModernElegantTemplate({ data }) {
         {/* Experience section with timeline */}
         {data.experience && data.experience.length > 0 && (
           <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
               Professional Experience
             </h2>
             <div className="space-y-6">
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="relative">
                   {/* Timeline line and dot */}
                   {i < data.experience.length - 1 && (
@@ -85,7 +85,7 @@ export default function ModernElegantTemplate({ data }) {
 
                   <div className="flex gap-6">
                     <div className="relative">
-                      <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                      <div className="w-12 h-12 bg-linear-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
                         {i + 1}
                       </div>
                     </div>
@@ -93,7 +93,7 @@ export default function ModernElegantTemplate({ data }) {
                     <div className="flex-1 bg-white rounded-xl p-6 shadow-md border border-gray-100">
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-xl font-bold text-gray-800">{exp.role}</h3>
-                        <span className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm">
+                        <span className="bg-linear-to-r from-indigo-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm">
                           {exp.duration}
                         </span>
                       </div>
@@ -103,7 +103,7 @@ export default function ModernElegantTemplate({ data }) {
                       )}
                       {exp.highlights && (
                         <ul className="space-y-2">
-                          {exp.highlights.map((highlight, j) => (
+                          {exp.highlights.map((highlight: any, j: number) => (
                             <li key={j} className="flex items-start gap-2">
                               <span className="text-indigo-500 mt-1">▸</span>
                               <span className="text-gray-700">{highlight}</span>
@@ -124,12 +124,12 @@ export default function ModernElegantTemplate({ data }) {
           {/* Education section */}
           {data.education && data.education.length > 0 && (
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+              <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
                 Education
               </h2>
               <div className="space-y-4">
-                {data.education.map((edu, i) => (
-                  <div key={i} className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 shadow-md">
+                {data.education.map((edu: any, i: number) => (
+                  <div key={i} className="bg-linear-to-r from-indigo-50 to-purple-50 rounded-xl p-6 shadow-md">
                     <h3 className="text-lg font-bold text-gray-800 mb-1">{edu.degree}</h3>
                     <h4 className="text-indigo-600 font-medium mb-2">{edu.institution}</h4>
                     <div className="flex justify-between items-center mb-2">
@@ -145,12 +145,12 @@ export default function ModernElegantTemplate({ data }) {
           {/* Skills section with progress bars */}
           {data.skills && data.skills.length > 0 && (
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+              <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
                 Skills & Expertise
               </h2>
-              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 shadow-md">
+              <div className="bg-linear-to-r from-indigo-50 to-purple-50 rounded-xl p-6 shadow-md">
                 <div className="space-y-4">
-                  {data.skills.map((skill, i) => (
+                  {data.skills.map((skill: any, i: number) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="w-full">
                         <div className="flex justify-between mb-1">
@@ -158,7 +158,7 @@ export default function ModernElegantTemplate({ data }) {
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
                           <div 
-                            className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full" 
+                            className="bg-linear-to-r from-indigo-500 to-purple-500 h-2 rounded-full" 
                             style={{ width: `${75 + (i % 3) * 8}%` }}
                           ></div>
                         </div>
@@ -174,15 +174,15 @@ export default function ModernElegantTemplate({ data }) {
         {/* Projects section with cards */}
         {data.projects && data.projects.length > 0 && (
           <section>
-            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
               Featured Projects
             </h2>
             <div className="grid grid-cols-2 gap-6">
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-bold text-gray-800">{project.name}</h3>
-                    <span className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm">
+                    <span className="bg-linear-to-r from-indigo-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm">
                       {project.duration}
                     </span>
                   </div>
@@ -196,7 +196,7 @@ export default function ModernElegantTemplate({ data }) {
                         {project.technologies.map((tech, j) => (
                           <span 
                             key={j} 
-                            className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium"
+                            className="px-3 py-1 bg-linear-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium"
                           >
                             {tech}
                           </span>

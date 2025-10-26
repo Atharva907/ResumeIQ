@@ -1,4 +1,4 @@
-export default function LegalTemplate({ data }) {
+export default function LegalTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-white text-gray-800" id="resume-preview">
       {/* Legal Header */}
@@ -39,7 +39,7 @@ export default function LegalTemplate({ data }) {
           {data.experience && data.experience.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Legal Experience</h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 pb-4 border-l-4 border-gray-800 pl-5">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-gray-900">{exp.role}</h4>
@@ -49,7 +49,7 @@ export default function LegalTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -63,7 +63,7 @@ export default function LegalTemplate({ data }) {
           {data.education && data.education.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Legal Education</h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 pb-4 border-l-4 border-gray-800 pl-5">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-gray-900">{edu.degree}</h4>
@@ -84,7 +84,7 @@ export default function LegalTemplate({ data }) {
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Legal Skills</h3>
               <div className="flex flex-wrap gap-2">
-                {data.skills.map((skill, i) => (
+                {data.skills.map((skill: any, i: number) => (
                   <span key={i} className="px-3 py-1 bg-gray-100 rounded-md text-sm text-gray-700">{skill}</span>
                 ))}
               </div>

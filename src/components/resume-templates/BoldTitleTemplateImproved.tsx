@@ -1,10 +1,10 @@
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 
-export default function BoldTitleTemplateImproved({ data }) {
+export default function BoldTitleTemplateImproved({ data }: { data: any }) {
   return (
     <div className="min-h-[29.7cm] w-[21cm] mx-auto bg-white shadow-lg" id="resume-preview">
       {/* Bold header with name and title */}
-      <header className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-6 rounded-t-lg">
+      <header className="bg-linear-to-r from-gray-800 to-gray-900 text-white p-6 rounded-t-lg">
         <h1 className="text-4xl font-bold mb-2">{data.name || "John Doe"}</h1>
         <h2 className="text-2xl font-light mb-4">{data.title || "Software Engineer"}</h2>
 
@@ -57,7 +57,7 @@ export default function BoldTitleTemplateImproved({ data }) {
             {data.experience && data.experience.length > 0 && (
               <section className="mb-6">
                 <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-800">Experience</h2>
-                {data.experience.map((exp, i) => (
+                {data.experience.map((exp: any, i: number) => (
                   <div key={i} className="mb-5 border-l-4 border-gray-800 pl-5">
                     <div className="mb-2">
                       <div className="flex justify-between mb-1">
@@ -71,7 +71,7 @@ export default function BoldTitleTemplateImproved({ data }) {
 
                     {exp.highlights && (
                       <ul className="mt-2 ml-4 list-disc text-sm text-gray-700 space-y-1">
-                        {exp.highlights.map((highlight, j) => (
+                        {exp.highlights.map((highlight: any, j: number) => (
                           <li key={j}>{highlight}</li>
                         ))}
                       </ul>
@@ -84,7 +84,7 @@ export default function BoldTitleTemplateImproved({ data }) {
             {data.education && data.education.length > 0 && (
               <section className="mb-6">
                 <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-800">Education</h2>
-                {data.education.map((edu, i) => (
+                {data.education.map((edu: any, i: number) => (
                   <div key={i} className="mb-3 border-l-4 border-gray-800 pl-5">
                     <div className="mb-1">
                       <div className="flex justify-between mb-1">
@@ -107,7 +107,7 @@ export default function BoldTitleTemplateImproved({ data }) {
               <section className="mb-6">
                 <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-800">Skills</h2>
                 <div className="grid grid-cols-2 gap-2">
-                  {data.skills.map((skill, i) => (
+                  {data.skills.map((skill: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-gray-800 rounded-full flex-shrink-0"></div>
                       <span className="text-sm truncate">{skill}</span>
@@ -120,7 +120,7 @@ export default function BoldTitleTemplateImproved({ data }) {
             {data.projects && data.projects.length > 0 && (
               <section className="mb-6">
                 <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-800">Projects</h2>
-                {data.projects.map((project, i) => (
+                {data.projects.map((project: any, i: number) => (
                   <div key={i} className="mb-4 p-4 bg-gray-50 rounded-md border-l-4 border-gray-800">
                     <div className="flex justify-between mb-2">
                       <h3 className="text-lg font-bold">{project.name}</h3>

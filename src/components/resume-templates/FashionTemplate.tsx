@@ -1,4 +1,4 @@
-export default function FashionTemplate({ data }) {
+export default function FashionTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-gradient-to-br from-pink-50 to-purple-50 text-gray-800" id="resume-preview">
       {/* Fashion Header */}
@@ -38,7 +38,7 @@ export default function FashionTemplate({ data }) {
                 <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
                 Fashion Experience
               </h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-light text-purple-900">{exp.role}</h4>
@@ -48,7 +48,7 @@ export default function FashionTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -65,7 +65,7 @@ export default function FashionTemplate({ data }) {
                 <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
                 Fashion Education
               </h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-light text-purple-900">{edu.degree}</h4>
@@ -90,8 +90,8 @@ export default function FashionTemplate({ data }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <div className="flex flex-wrap gap-2">
-                  {data.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-sm text-purple-700">{skill}</span>
+                  {data.skills.map((skill: any, i: number) => (
+                    <span key={i} className="px-3 py-1 bg-linear-to-r from-purple-100 to-pink-100 rounded-full text-sm text-purple-700">{skill}</span>
                   ))}
                 </div>
               </div>

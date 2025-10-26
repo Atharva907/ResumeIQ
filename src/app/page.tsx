@@ -17,7 +17,7 @@ export default function Home() {
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="mx-auto max-w-4xl text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-yellow-600 to-foreground">
+              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl bg-clip-text text-transparent bg-linear-to-r from-foreground via-yellow-600 to-foreground">
                 Build, Verify, and Optimize Your Resume with <span className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[0.2em] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-yellow-500 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0_0.35_1)] hover:after:origin-bottom-left hover:after:scale-x-100">AI</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
@@ -25,17 +25,17 @@ export default function Home() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Link href="/auth/register">
-                  <Button size="lg" className="group relative px-8 py-3 overflow-hidden bg-gradient-to-r from-yellow-400 to-yellow-600 text-white transition-all duration-300 ease-out hover:from-yellow-500 hover:to-yellow-700 hover:shadow-lg hover:shadow-yellow-500/25">
+                  <Button size="lg" className="group relative px-8 py-3 overflow-hidden bg-linear-to-r from-yellow-400 to-yellow-600 text-white transition-all duration-300 ease-out hover:from-yellow-500 hover:to-yellow-700 hover:shadow-lg hover:shadow-yellow-500/25">
                     <span className="relative z-10 flex items-center">
                       Get Started <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </span>
-                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-300 ease-out group-hover:translate-x-full"></div>
+                    <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-300 ease-out group-hover:translate-x-full"></div>
                   </Button>
                 </Link>
                 <Link href="/auth/login">
                   <Button variant="outline" size="lg" className="group relative px-8 py-3 overflow-hidden border-yellow-400 text-yellow-600 transition-all duration-300 ease-out hover:bg-yellow-50 hover:shadow-md hover:shadow-yellow-500/10">
                     <span className="relative z-10">Sign In</span>
-                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-yellow-100/50 to-transparent transition-transform duration-300 ease-out group-hover:translate-x-full"></div>
+                    <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-yellow-100/50 to-transparent transition-transform duration-300 ease-out group-hover:translate-x-full"></div>
                   </Button>
                 </Link>
               </div>
@@ -53,7 +53,7 @@ export default function Home() {
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-yellow-600 to-foreground">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-clip-text text-transparent bg-linear-to-r from-foreground via-yellow-600 to-foreground">
                 Everything you need to create the perfect resume
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
@@ -126,7 +126,7 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-yellow-50/50 to-yellow-100/30 py-24 sm:py-32">
+        <section className="relative overflow-hidden bg-linear-to-r from-yellow-50/50 to-yellow-100/30 py-24 sm:py-32">
           {/* Decorative elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-yellow-200/30 blur-3xl"></div>
@@ -135,7 +135,7 @@ export default function Home() {
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-yellow-600 to-foreground">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-clip-text text-transparent bg-linear-to-r from-foreground via-yellow-600 to-foreground">
                 Ready to land your dream job?
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
@@ -143,7 +143,7 @@ export default function Home() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Link href="/auth/register">
-                  <Button size="lg" className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white">
+                  <Button size="lg" className="px-8 py-3 bg-linear-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white">
                     Get Started <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

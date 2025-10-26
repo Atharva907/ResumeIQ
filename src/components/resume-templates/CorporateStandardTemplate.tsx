@@ -1,4 +1,4 @@
-export default function CorporateStandardTemplate({ data }) {
+export default function CorporateStandardTemplate({ data }: { data: any }) {
   return (
     <div className="p-6 font-sans text-gray-800 bg-white" id="resume-preview">
       <div className="mb-6 border-b-2 border-gray-800 pb-4">
@@ -21,7 +21,7 @@ export default function CorporateStandardTemplate({ data }) {
       {data.experience && data.experience.length > 0 && (
         <section className="mb-6">
           <h2 className="text-lg font-bold mb-3 uppercase border-b border-gray-300 pb-1">Professional Experience</h2>
-          {data.experience.map((exp, i) => (
+          {data.experience.map((exp: any, i: number) => (
             <div key={i} className="mb-4">
               <div className="flex justify-between mb-1">
                 <p className="font-semibold">{exp.role}</p>
@@ -31,7 +31,7 @@ export default function CorporateStandardTemplate({ data }) {
               {exp.description && <p className="text-sm mb-2">{exp.description}</p>}
               {exp.highlights && (
                 <ul className="ml-5 list-disc text-sm">
-                  {exp.highlights.map((highlight, j) => (
+                  {exp.highlights.map((highlight: any, j: number) => (
                     <li key={j} className="mb-1">{highlight}</li>
                   ))}
                 </ul>
@@ -45,7 +45,7 @@ export default function CorporateStandardTemplate({ data }) {
         {data.education && data.education.length > 0 && (
           <section className="mb-6">
             <h2 className="text-lg font-bold mb-3 uppercase border-b border-gray-300 pb-1">Education</h2>
-            {data.education.map((edu, i) => (
+            {data.education.map((edu: any, i: number) => (
               <div key={i} className="mb-3">
                 <div className="flex justify-between mb-1">
                   <p className="font-semibold">{edu.degree}</p>
@@ -62,7 +62,7 @@ export default function CorporateStandardTemplate({ data }) {
           <section className="mb-6">
             <h2 className="text-lg font-bold mb-3 uppercase border-b border-gray-300 pb-1">Skills & Expertise</h2>
             <ul className="list-disc text-sm ml-5">
-              {data.skills.map((skill, i) => (
+              {data.skills.map((skill: any, i: number) => (
                 <li key={i} className="mb-1">{skill}</li>
               ))}
             </ul>
@@ -73,7 +73,7 @@ export default function CorporateStandardTemplate({ data }) {
       {data.certifications && data.certifications.length > 0 && (
         <section className="mb-6">
           <h2 className="text-lg font-bold mb-3 uppercase border-b border-gray-300 pb-1">Certifications</h2>
-          {data.certifications.map((cert, i) => (
+          {data.certifications.map((cert: any, i: number) => (
             <div key={i} className="mb-2">
               <div className="flex justify-between">
                 <p className="font-semibold text-sm">{cert.name}</p>

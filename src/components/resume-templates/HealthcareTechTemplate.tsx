@@ -1,4 +1,4 @@
-export default function HealthcareTechTemplate({ data }) {
+export default function HealthcareTechTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-gradient-to-br from-teal-50 to-cyan-50 text-gray-800" id="resume-preview">
       {/* Healthcare Tech Header */}
@@ -49,7 +49,7 @@ export default function HealthcareTechTemplate({ data }) {
                 <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
                 Healthcare Tech Experience
               </h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-teal-900">{exp.role}</h4>
@@ -59,7 +59,7 @@ export default function HealthcareTechTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -76,7 +76,7 @@ export default function HealthcareTechTemplate({ data }) {
                 <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
                 Healthcare Tech Education
               </h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-teal-900">{edu.degree}</h4>
@@ -101,8 +101,8 @@ export default function HealthcareTechTemplate({ data }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <div className="flex flex-wrap gap-2">
-                  {data.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full text-sm text-teal-700">{skill}</span>
+                  {data.skills.map((skill: any, i: number) => (
+                    <span key={i} className="px-3 py-1 bg-linear-to-r from-teal-100 to-cyan-100 rounded-full text-sm text-teal-700">{skill}</span>
                   ))}
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function HealthcareTechTemplate({ data }) {
                 <span className="w-2 h-2 bg-teal-600 rounded-full mr-2"></span>
                 Healthcare Tech Projects
               </h3>
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <h4 className="text-lg font-bold text-teal-900 mb-1">{project.name}</h4>
                   <p className="text-sm text-teal-600 mb-2">{project.duration}</p>

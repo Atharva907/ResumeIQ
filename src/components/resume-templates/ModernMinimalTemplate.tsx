@@ -1,4 +1,4 @@
-export default function ModernMinimalTemplate({ data }) {
+export default function ModernMinimalTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-white text-gray-800" id="resume-preview">
       {/* Header Section */}
@@ -29,7 +29,7 @@ export default function ModernMinimalTemplate({ data }) {
           {data.experience && data.experience.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Experience</h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-medium text-gray-900">{exp.role}</h4>
@@ -39,7 +39,7 @@ export default function ModernMinimalTemplate({ data }) {
                   {exp.description && <p className="text-gray-700 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-700">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -53,7 +53,7 @@ export default function ModernMinimalTemplate({ data }) {
           {data.education && data.education.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Education</h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-medium text-gray-900">{edu.degree}</h4>
@@ -74,7 +74,7 @@ export default function ModernMinimalTemplate({ data }) {
             <section className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Skills</h3>
               <div className="flex flex-wrap gap-2">
-                {data.skills.map((skill, i) => (
+                {data.skills.map((skill: any, i: number) => (
                   <span key={i} className="px-3 py-1 bg-gray-100 rounded-md text-sm text-gray-700">{skill}</span>
                 ))}
               </div>
@@ -85,7 +85,7 @@ export default function ModernMinimalTemplate({ data }) {
           {data.projects && data.projects.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Projects</h3>
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="mb-4 pb-4 border-b border-gray-200 last:border-0">
                   <h4 className="text-lg font-medium text-gray-900 mb-1">{project.name}</h4>
                   <p className="text-sm text-gray-500 mb-2">{project.duration}</p>

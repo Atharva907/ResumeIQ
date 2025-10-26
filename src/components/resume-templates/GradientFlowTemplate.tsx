@@ -1,7 +1,7 @@
-export default function GradientFlowTemplate({ data }) {
+export default function GradientFlowTemplate({ data }: { data: any }) {
   return (
     <div className="p-6 font-sans text-gray-800 bg-white" id="resume-preview">
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 -m-6 mb-6 rounded-b-2xl">
+      <div className="bg-linear-to-r from-blue-500 to-purple-600 text-white p-6 -m-6 mb-6 rounded-b-2xl">
         <h1 className="text-3xl font-bold mb-2">{data.name || "John Doe"}</h1>
         <p className="text-xl mb-4">{data.title || "Software Engineer"}</p>
         <div className="flex flex-wrap gap-4 text-sm">
@@ -13,15 +13,15 @@ export default function GradientFlowTemplate({ data }) {
 
       {data.summary && (
         <section className="mb-6">
-          <h2 className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Summary</h2>
+          <h2 className="text-xl font-bold mb-2 bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Summary</h2>
           <p>{data.summary}</p>
         </section>
       )}
 
       {data.experience && data.experience.length > 0 && (
         <section className="mb-6">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Experience</h2>
-          {data.experience.map((exp, i) => (
+          <h2 className="text-xl font-bold mb-3 bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Experience</h2>
+          {data.experience.map((exp: any, i: number) => (
             <div key={i} className="mb-4 pb-4 border-l-2 border-gradient-to-b from-blue-500 to-purple-600 pl-4">
               <div className="flex justify-between mb-1">
                 <p className="font-semibold text-lg">{exp.role}</p>
@@ -31,7 +31,7 @@ export default function GradientFlowTemplate({ data }) {
               {exp.description && <p className="text-sm text-gray-700 mb-2">{exp.description}</p>}
               {exp.highlights && (
                 <ul className="ml-5 list-disc text-sm">
-                  {exp.highlights.map((highlight, j) => (
+                  {exp.highlights.map((highlight: any, j: number) => (
                     <li key={j} className="mb-1">{highlight}</li>
                   ))}
                 </ul>
@@ -44,8 +44,8 @@ export default function GradientFlowTemplate({ data }) {
       <div className="grid grid-cols-2 gap-6">
         {data.education && data.education.length > 0 && (
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Education</h2>
-            {data.education.map((edu, i) => (
+            <h2 className="text-xl font-bold mb-3 bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Education</h2>
+            {data.education.map((edu: any, i: number) => (
               <div key={i} className="mb-3">
                 <div className="flex justify-between mb-1">
                   <p className="font-semibold">{edu.degree}</p>
@@ -60,10 +60,10 @@ export default function GradientFlowTemplate({ data }) {
 
         {data.skills && data.skills.length > 0 && (
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Skills</h2>
+            <h2 className="text-xl font-bold mb-3 bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Skills</h2>
             <div className="flex flex-wrap gap-2">
-              {data.skills.map((skill, i) => (
-                <span key={i} className="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 rounded-md text-sm">{skill}</span>
+              {data.skills.map((skill: any, i: number) => (
+                <span key={i} className="px-3 py-1 bg-linear-to-r from-blue-100 to-purple-100 rounded-md text-sm">{skill}</span>
               ))}
             </div>
           </section>
@@ -72,9 +72,9 @@ export default function GradientFlowTemplate({ data }) {
 
       {data.projects && data.projects.length > 0 && (
         <section className="mb-6">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</h2>
-          {data.projects.map((project, i) => (
-            <div key={i} className="mb-3 p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+          <h2 className="text-xl font-bold mb-3 bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</h2>
+          {data.projects.map((project: any, i: number) => (
+            <div key={i} className="mb-3 p-3 bg-linear-to-r from-blue-50 to-purple-50 rounded-lg">
               <div className="flex justify-between mb-1">
                 <p className="font-semibold">{project.name}</p>
                 <p className="text-sm text-gray-500">{project.duration}</p>

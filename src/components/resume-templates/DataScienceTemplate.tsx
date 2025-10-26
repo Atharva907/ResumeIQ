@@ -1,4 +1,4 @@
-export default function DataScienceTemplate({ data }) {
+export default function DataScienceTemplate({ data }: { data: any }) {
   return (
     <div className="p-8 bg-gradient-to-br from-gray-800 to-blue-900 text-white" id="resume-preview">
       {/* Data Science Header */}
@@ -50,7 +50,7 @@ export default function DataScienceTemplate({ data }) {
                 <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                 Data Science Experience
               </h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 p-4 bg-gray-800 rounded-lg">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-white">{exp.role}</h4>
@@ -60,7 +60,7 @@ export default function DataScienceTemplate({ data }) {
                   {exp.description && <p className="text-gray-300 mb-2">{exp.description}</p>}
                   {exp.highlights && (
                     <ul className="list-disc pl-5 text-gray-300">
-                      {exp.highlights.map((highlight, j) => (
+                      {exp.highlights.map((highlight: any, j: number) => (
                         <li key={j} className="mb-1">{highlight}</li>
                       ))}
                     </ul>
@@ -77,7 +77,7 @@ export default function DataScienceTemplate({ data }) {
                 <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                 Data Science Education
               </h3>
-              {data.education.map((edu, i) => (
+              {data.education.map((edu: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-gray-800 rounded-lg">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-white">{edu.degree}</h4>
@@ -102,7 +102,7 @@ export default function DataScienceTemplate({ data }) {
               </h3>
               <div className="p-4 bg-gray-800 rounded-lg">
                 <div className="flex flex-wrap gap-2">
-                  {data.skills.map((skill, i) => (
+                  {data.skills.map((skill: any, i: number) => (
                     <span key={i} className="px-3 py-1 bg-gray-700 rounded-md text-sm text-blue-300">{skill}</span>
                   ))}
                 </div>
@@ -117,7 +117,7 @@ export default function DataScienceTemplate({ data }) {
                 <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                 Data Science Projects
               </h3>
-              {data.projects.map((project, i) => (
+              {data.projects.map((project: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-gray-800 rounded-lg">
                   <h4 className="text-lg font-bold text-white mb-1">{project.name}</h4>
                   <p className="text-sm text-blue-300 mb-2">{project.duration}</p>

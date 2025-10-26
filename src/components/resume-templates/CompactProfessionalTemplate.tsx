@@ -1,4 +1,4 @@
-export default function CompactProfessionalTemplate({ data }) {
+export default function CompactProfessionalTemplate({ data }: { data: any }) {
   return (
     <div className="p-4 font-sans text-gray-800 bg-white" id="resume-preview">
       <div className="mb-4 flex justify-between items-start">
@@ -25,7 +25,7 @@ export default function CompactProfessionalTemplate({ data }) {
       {data.experience && data.experience.length > 0 && (
         <section className="mb-4">
           <h2 className="text-sm font-bold uppercase mb-2">Experience</h2>
-          {data.experience.map((exp, i) => (
+          {data.experience.map((exp: any, i: number) => (
             <div key={i} className="mb-3">
               <div className="flex justify-between mb-1">
                 <p className="font-semibold text-sm">{exp.role}</p>
@@ -35,7 +35,7 @@ export default function CompactProfessionalTemplate({ data }) {
               {exp.description && <p className="text-xs mb-1">{exp.description}</p>}
               {exp.highlights && (
                 <ul className="ml-4 list-disc text-xs">
-                  {exp.highlights.map((highlight, j) => (
+                  {exp.highlights.map((highlight: any, j: number) => (
                     <li key={j} className="mb-1">{highlight}</li>
                   ))}
                 </ul>
@@ -49,7 +49,7 @@ export default function CompactProfessionalTemplate({ data }) {
         {data.education && data.education.length > 0 && (
           <section className="mb-4">
             <h2 className="text-sm font-bold uppercase mb-2">Education</h2>
-            {data.education.map((edu, i) => (
+            {data.education.map((edu: any, i: number) => (
               <div key={i} className="mb-2">
                 <div className="flex justify-between mb-1">
                   <p className="font-semibold text-sm">{edu.degree}</p>
@@ -66,7 +66,7 @@ export default function CompactProfessionalTemplate({ data }) {
           <section className="mb-4">
             <h2 className="text-sm font-bold uppercase mb-2">Skills</h2>
             <div className="flex flex-wrap gap-1">
-              {data.skills.map((skill, i) => (
+              {data.skills.map((skill: any, i: number) => (
                 <span key={i} className="px-2 py-1 bg-gray-100 rounded text-xs">{skill}</span>
               ))}
             </div>
@@ -77,7 +77,7 @@ export default function CompactProfessionalTemplate({ data }) {
       {data.projects && data.projects.length > 0 && (
         <section className="mb-4">
           <h2 className="text-sm font-bold uppercase mb-2">Projects</h2>
-          {data.projects.map((project, i) => (
+          {data.projects.map((project: any, i: number) => (
             <div key={i} className="mb-2">
               <div className="flex justify-between mb-1">
                 <p className="font-semibold text-sm">{project.name}</p>

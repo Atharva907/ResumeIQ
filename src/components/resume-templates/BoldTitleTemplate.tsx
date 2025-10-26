@@ -1,4 +1,6 @@
-export default function BoldTitleTemplate({ data }) {
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
+
+export default function BoldTitleTemplate({ data }: { data: any }) {
   return (
     <div className="p-6 font-sans text-gray-800 bg-white" id="resume-preview">
       <div className="text-center mb-8">
@@ -21,7 +23,7 @@ export default function BoldTitleTemplate({ data }) {
       {data.experience && data.experience.length > 0 && (
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-center mb-5 uppercase tracking-wide">Experience</h2>
-          {data.experience.map((exp, i) => (
+          {data.experience.map((exp: { role: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; company: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; duration: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; description: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; highlights: any[]; }, i: Key | null | undefined) => (
             <div key={i} className="mb-6">
               <div className="text-center mb-3">
                 <h3 className="text-xl font-bold uppercase">{exp.role}</h3>
@@ -31,7 +33,7 @@ export default function BoldTitleTemplate({ data }) {
               {exp.description && <p className="text-sm mb-3 text-center">{exp.description}</p>}
               {exp.highlights && (
                 <ul className="ml-8 list-disc text-sm">
-                  {exp.highlights.map((highlight, j) => (
+                  {exp.highlights.map((highlight: any, j: number) => (
                     <li key={j} className="mb-2">{highlight}</li>
                   ))}
                 </ul>
@@ -44,7 +46,7 @@ export default function BoldTitleTemplate({ data }) {
       {data.education && data.education.length > 0 && (
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-center mb-5 uppercase tracking-wide">Education</h2>
-          {data.education.map((edu, i) => (
+          {data.education.map((edu: { degree: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; institution: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; duration: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; details: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }, i: Key | null | undefined) => (
             <div key={i} className="mb-4">
               <div className="text-center mb-2">
                 <h3 className="text-xl font-bold uppercase">{edu.degree}</h3>
@@ -61,7 +63,7 @@ export default function BoldTitleTemplate({ data }) {
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-center mb-5 uppercase tracking-wide">Skills</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            {data.skills.map((skill, i) => (
+            {data.skills.map((skill: any, i: number) => (
               <span key={i} className="px-4 py-2 bg-gray-100 rounded-md text-sm font-medium">{skill}</span>
             ))}
           </div>
@@ -71,7 +73,7 @@ export default function BoldTitleTemplate({ data }) {
       {data.projects && data.projects.length > 0 && (
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-center mb-5 uppercase tracking-wide">Projects</h2>
-          {data.projects.map((project, i) => (
+          {data.projects.map((project: any, i: number) => (
             <div key={i} className="mb-4">
               <div className="text-center mb-2">
                 <h3 className="text-xl font-bold uppercase">{project.name}</h3>
