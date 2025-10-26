@@ -25,7 +25,7 @@ export default function CreativePortfolioTemplate({ data }: { data: any }) {
             {/* Profile image placeholder with creative border */}
             <div className="relative">
               <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-4xl font-bold">
-                {data.name ? data.name.split(" ").map(n => n[0]).join("").toUpperCase() : "JD"}
+                {data.name ? data.name.split(" ").map((n: any[]) => n[0]).join("").toUpperCase() : "JD"}
               </div>
               <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white shadow-lg">
                 <Calendar className="h-4 w-4" />
@@ -221,7 +221,7 @@ export default function CreativePortfolioTemplate({ data }: { data: any }) {
                       <div>
                         <p className="text-sm font-medium text-gray-600 mb-2">Technologies:</p>
                         <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech, j) => (
+                          {project.technologies.map((tech: any, j: number) => (
                             <span 
                               key={j} 
                               className={`px-3 py-1 rounded-full text-xs font-medium ${

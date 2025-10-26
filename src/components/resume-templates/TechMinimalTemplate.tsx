@@ -141,7 +141,7 @@ export default function TechMinimalTemplate({ data }: { data: any }) {
                   <div className="mt-2 p-2 bg-gray-900 rounded text-xs">
                     <p className="text-gray-400 mb-1">$ <span className="text-gray-500">tech</span> --list</p>
                     <div className="flex flex-wrap gap-2 text-purple-400">
-                      {project.technologies.map((tech, j) => (
+                      {project.technologies.map((tech: any, j: number) => (
                         <span key={j} className="bg-gray-800 px-2 py-1 rounded border border-gray-700">{tech}</span>
                       ))}
                     </div>

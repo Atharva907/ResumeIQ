@@ -70,7 +70,7 @@ export default function CreativeSplitTemplate({ data }: { data: any }) {
           <div className="mb-8">
             <h2 className="text-lg font-semibold mb-3 border-b border-indigo-700 pb-1">Languages</h2>
             <div className="space-y-2 text-sm">
-              {data.languages.map((lang, i) => (
+              {data.languages.map((lang: any, i: number) => (
                 <div key={i} className="flex justify-between">
                   <span>{lang.name}</span>
                   <span className="text-indigo-300">{lang.level}</span>

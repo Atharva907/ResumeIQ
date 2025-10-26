@@ -111,7 +111,7 @@ export default function ExecutiveTemplate({ data }: { data: any }) {
             <section>
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Professional Achievements</h3>
               <ul className="list-disc pl-5 text-gray-700">
-                {data.achievements.map((achievement, i) => (
+                {data.achievements.map((achievement: any, i: number) => (
                   <li key={i} className="mb-2 text-sm">{achievement}</li>
                 ))}
               </ul>

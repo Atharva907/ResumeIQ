@@ -95,7 +95,7 @@ export default function LegalTemplate({ data }: { data: any }) {
           {data.cases && data.cases.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Notable Cases</h3>
-              {data.cases.map((case_, i) => (
+              {data.cases.map((case_: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-gray-50 rounded-md">
                   <h4 className="text-lg font-medium text-gray-900 mb-1">{case_.name}</h4>
                   <p className="text-sm text-gray-600 mb-2">{case_.outcome}</p>
@@ -110,7 +110,7 @@ export default function LegalTemplate({ data }: { data: any }) {
             <section>
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Professional Achievements</h3>
               <ul className="list-disc pl-5 text-gray-700">
-                {data.achievements.map((achievement, i) => (
+                {data.achievements.map((achievement: any, i: number) => (
                   <li key={i} className="mb-1 text-sm">{achievement}</li>
                 ))}
               </ul>

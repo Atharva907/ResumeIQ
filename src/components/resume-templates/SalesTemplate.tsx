@@ -118,7 +118,7 @@ export default function SalesTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <ul className="list-disc pl-5 text-gray-700">
-                  {data.achievements.map((achievement, i) => (
+                  {data.achievements.map((achievement: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{achievement}</li>
                   ))}
                 </ul>
@@ -135,7 +135,7 @@ export default function SalesTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <div className="grid grid-cols-2 gap-2">
-                  {data.clients.map((client, i) => (
+                  {data.clients.map((client: any, i: number) => (
                     <div key={i} className="text-sm text-emerald-700 font-medium">{client}</div>
                   ))}
                 </div>

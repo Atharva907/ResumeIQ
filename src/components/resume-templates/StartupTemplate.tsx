@@ -117,7 +117,7 @@ export default function StartupTemplate({ data }: { data: any }) {
                 <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
                 Startups Founded
               </h3>
-              {data.startups.map((startup, i) => (
+              {data.startups.map((startup: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <h4 className="text-lg font-bold text-indigo-900 mb-1">{startup.name}</h4>
                   <p className="text-sm text-indigo-600 mb-2">{startup.duration}</p>
@@ -141,7 +141,7 @@ export default function StartupTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <ul className="list-disc pl-5 text-gray-700">
-                  {data.achievements.map((achievement, i) => (
+                  {data.achievements.map((achievement: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{achievement}</li>
                   ))}
                 </ul>

@@ -140,7 +140,7 @@ export default function EngineeringTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <ul className="list-disc pl-5 text-gray-700">
-                  {data.achievements.map((achievement, i) => (
+                  {data.achievements.map((achievement: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{achievement}</li>
                   ))}
                 </ul>

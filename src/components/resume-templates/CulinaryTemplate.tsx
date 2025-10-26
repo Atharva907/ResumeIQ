@@ -116,7 +116,7 @@ export default function CulinaryTemplate({ data }: { data: any }) {
                 <span className="w-2 h-2 bg-orange-600 rounded-full mr-2"></span>
                 Signature Dishes
               </h3>
-              {data.signatureDishes.map((dish, i) => (
+              {data.signatureDishes.map((dish: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <h4 className="text-lg font-bold text-orange-900 mb-1">{dish.name}</h4>
                   <p className="text-sm text-orange-600 mb-2">{dish.cuisine}</p>
@@ -140,7 +140,7 @@ export default function CulinaryTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <ul className="list-disc pl-5 text-gray-700">
-                  {data.achievements.map((achievement, i) => (
+                  {data.achievements.map((achievement: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{achievement}</li>
                   ))}
                 </ul>

@@ -116,7 +116,7 @@ export default function ConsultingTemplate({ data }: { data: any }) {
                 <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                 Case Studies
               </h3>
-              {data.caseStudies.map((case_, i) => (
+              {data.caseStudies.map((case_: any, i: number) => (
                 <div key={i} className="mb-4 p-4 bg-white rounded-lg shadow-md">
                   <h4 className="text-lg font-bold text-blue-900 mb-1">{case_.name}</h4>
                   <p className="text-sm text-blue-600 mb-2">{case_.client}</p>
@@ -140,7 +140,7 @@ export default function ConsultingTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-white rounded-lg shadow-md">
                 <ul className="list-disc pl-5 text-gray-700">
-                  {data.achievements.map((achievement, i) => (
+                  {data.achievements.map((achievement: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{achievement}</li>
                   ))}
                 </ul>

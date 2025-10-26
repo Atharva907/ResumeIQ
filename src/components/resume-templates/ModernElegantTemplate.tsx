@@ -7,7 +7,7 @@ export default function ModernElegantTemplate({ data }: { data: any }) {
       <header className="relative bg-linear-to-r from-indigo-600 via-purple-600 to-pink-500 p-8 pb-16">
         <div className="absolute top-4 right-4 w-24 h-24 bg-white rounded-full border-4 border-white shadow-lg flex items-center justify-center">
           <span className="text-3xl text-indigo-600 font-bold">
-            {data.name ? data.name.split(" ").map(n => n[0]).join("").toUpperCase() : "JD"}
+            {data.name ? data.name.split(" ").map((n: string) => n[0]).join("").toUpperCase() : "JD"}
           </span>
         </div>
         <div className="max-w-2xl">
@@ -193,7 +193,7 @@ export default function ModernElegantTemplate({ data }: { data: any }) {
                     <div>
                       <p className="text-sm font-medium text-gray-600 mb-2">Technologies:</p>
                       <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, j) => (
+                        {project.technologies.map((tech: any, j: number) => (
                           <span 
                             key={j} 
                             className="px-3 py-1 bg-linear-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium"

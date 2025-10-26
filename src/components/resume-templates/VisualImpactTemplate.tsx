@@ -38,7 +38,7 @@ export default function VisualImpactTemplate({ data }: { data: any }) {
           <div className="mb-6">
             <h2 className="text-lg font-semibold mb-3 uppercase tracking-wider">Languages</h2>
             <div className="space-y-2">
-              {data.languages.map((lang, i) => (
+              {data.languages.map((lang: any, i: number) => (
                 <div key={i} className="flex justify-between">
                   <span className="text-sm">{lang.name}</span>
                   <div className="flex gap-1">

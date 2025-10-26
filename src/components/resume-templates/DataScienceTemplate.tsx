@@ -141,7 +141,7 @@ export default function DataScienceTemplate({ data }: { data: any }) {
               </h3>
               <div className="p-4 bg-gray-800 rounded-lg">
                 <ul className="list-disc pl-5 text-gray-300">
-                  {data.achievements.map((achievement, i) => (
+                  {data.achievements.map((achievement: any, i: number) => (
                     <li key={i} className="mb-1 text-sm">{achievement}</li>
                   ))}
                 </ul>
