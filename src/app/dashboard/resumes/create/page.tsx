@@ -504,7 +504,8 @@ export default function CreateResumePage() {
     }
   };
 
-  const handlePreview = () => {
+  const handlePreview = (content: string) => {
+    setResumeData(content);
     setActiveTab("preview");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -716,7 +717,8 @@ export default function CreateResumePage() {
           </TabsList>
           <TabsContent value="edit" className="h-[calc(100%-40px)]">
             <CodeEditor
-              initialContent={resumeData}
+              value={resumeData}
+              onChange={setResumeData}
               onSave={handleSave}
               onPreview={handlePreview}
               onTemplateChange={handleTemplateChange}

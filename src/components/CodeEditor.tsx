@@ -21,7 +21,8 @@ import {
 } from "lucide-react";
 
 interface CodeEditorProps {
-  initialContent?: string;
+  value?: string;
+  onChange?: (content: string) => void;
   onSave?: (content: string) => void;
   onPreview?: (content: string) => void;
   onTemplateChange,
@@ -109,14 +110,15 @@ const templates = [
 
 
 export default function CodeEditor({ 
-  initialContent = JSON.stringify(defaultResumeData, null, 2), 
+  value = JSON.stringify(defaultResumeData, null, 2),
+  onChange, 
   onSave, 
   onPreview,
   onTemplateChange,
   onDownloadPDF,
   onDownloadDOCX 
 }: CodeEditorProps) {
-  const [content, setContent] = useState(initialContent);
+  const [content, setContent] = useState(value);
   const [selectedTemplate, setSelectedTemplate] = useState("ClassicTemplate");
   const [isImproving, setIsImproving] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -299,8 +301,12 @@ export default function CodeEditor({
           <Editor
             height="100%"
             defaultLanguage="json"
-            value={content}
-            onChange={(value) => setContent(value || "")}
+            value={value || content}
+            onChange={(value) => {
+              const newContent = value || "";
+              setContent(newContent);
+              if (onChange) onChange(newContent);
+            }}
             onMount={handleEditorDidMount}
             options={{
               minimap: { enabled: false },
