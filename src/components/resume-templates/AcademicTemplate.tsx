@@ -48,7 +48,7 @@ export default function AcademicTemplate({ data }: { data: any }) {
           {data.experience && data.experience.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Academic Experience</h3>
-              {data.experience.map((exp, i) => (
+              {data.experience.map((exp: any, i: number) => (
                 <div key={i} className="mb-6 pb-4 border-l-4 border-gray-800 pl-5">
                   <div className="flex justify-between mb-2">
                     <h4 className="text-lg font-bold text-gray-900">{exp.role}</h4>
