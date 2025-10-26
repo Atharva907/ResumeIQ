@@ -75,7 +75,7 @@ export default function AcademicTemplate({ data }: { data: any }) {
           {data.publications && data.publications.length > 0 && (
             <section className="mb-8">
               <h3 className="text-xl font-bold mb-4 text-gray-900 uppercase tracking-wide">Selected Publications</h3>
-              {data.publications.map((pub, i) => (
+              {data.publications.map((pub: any, i: number) => (
                 <div key={i} className="mb-4 pb-4 border-b border-gray-200 last:border-0">
                   <h4 className="text-lg font-medium text-gray-900 mb-1">{pub.title}</h4>
                   <p className="text-sm text-gray-600 italic mb-1">{pub.journal}</p>
